@@ -1,1 +1,1 @@
-Various Microchip projects with PIC 12F683 written with picas and XC8 compilers.
+Various Microchip projects for PIC 12F683 written with pic-as or XC8 compilers.
