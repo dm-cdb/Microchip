@@ -43,8 +43,8 @@ const unsigned char lcdHome = 0x02; // 0000 0010
 const unsigned char lcdCon = 0x0E; // 0000 1110 disp on, underline
 const unsigned char lcdFunc = 0x28; // 0010 1000 4bits,2 lines, 5x7 size
 
-const unsigned char myText1[] = "Gloire au CDB !";
-const unsigned char myText2[] = "Pour toujours !";
+const unsigned char myText1[] = "3 pins LCD display";
+const unsigned char myText2[] = "With HC595";
 
 // Declare functions
 void __interrupt() isr(void);
