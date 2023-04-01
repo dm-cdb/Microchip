@@ -1,1 +1,0 @@
-/mnt/d/Temp/MPLAB-Proj/XC8-TEMPLATE.X
