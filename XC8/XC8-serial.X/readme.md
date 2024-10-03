@@ -1,4 +1,4 @@
-This is a crude bit bang code for serial transmission, 8-n-1 : one start bit (low),8 data bit,one stop bit (high), no parity, 
+This is a crude bit bang code for serial transmission, 8-n-1 : one start bit (low), 8 data bit, one stop bit (high), no parity, 
 
 It uses timer2 to manage the data signal. At 9600 bauds, a bit or symbol shall be transmitted/recieved at 1/9600 = 104us ;
 At 4MHZ, each tick interval is one instruction cycle, that is 1us, so PIR2 register will simply equal 104, with no pre|post scaler.
