@@ -24,11 +24,11 @@ Below is a schematic of a typical external quartz connections to a 12F683 :<br>
   ![capacitors for xtal](https://github.com/user-attachments/assets/d344e37d-e252-4226-a082-f7fc42f0ff1f)
   <br>
  
-  As can be seen, the gate oscillator used in the Pic uses a common Pierce oscillation cicrcuit : it relies on simple inverting amplifier, a feedback resistor RF, and the oscillator circuit with the crystal and two external capacitor C1 and C2.<br>
+  As can be seen, the gate oscillator used in the Pic uses a common Pierce oscillation cicrcuit : it relies on a simple inverting amplifier, a feedback resistor RF, and the oscillator circuit with the crystal and two external capacitor C1 and C2.<br>
   An optionnal RS resistor can be added if the crystal drive (provided by the amplifier gain) is to be lowered.<br>
+  <br>
  <a href="https://www.ti.com/lit/an/szza043/szza043.pdf?ts=1728842789584"> From Texas Inbstrument application note</a> :<br>
- <br>
- <br>
+ 
  RF : RF is the feedback resistor of the CMOS inverter and it biases the inverter in its linear region :<br>
  This means that instead of a binary high (ie 5V) or low (0V) at its input and output, both will be around VDD / 2, with VDD = supplied voltage, usually 5V for a PIC)<br>
 Usually, the value chosen is between 1 MΩ and 10Ω, to create some initial noise and "bootstrap" the oscillation. When the oscillation is close to the resonant (nominal) frequency of the crystal, its circuit impedance is much lower than the RF circuit which is therefore kind of discarded (for its AC part). The PIC12F683 datasheet thus states : "The value of RF varies with the Oscillator mode selected (typically between 2 MΩ to 10 MΩ)." <br>
@@ -72,7 +72,7 @@ Below, from Texas Instrument note, the effect of a RS resistor on the signal :<b
  
  <br>
  In this example :<br>
- - C1 & C2 = 30pF
+ - C1 & C2 = 30pF<br>
  - XC2 (reactance of capacitor at resonant frequency, 25Mhz) = 200Ohms.<br>
  - VCC = 3.3V<br>
  <br>
