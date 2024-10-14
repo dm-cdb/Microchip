@@ -23,9 +23,11 @@ Below is a schematic of a typical external quartz connections to a 12F683 :<br>
  <br>
   ![capacitors for xtal](https://github.com/user-attachments/assets/d344e37d-e252-4226-a082-f7fc42f0ff1f)
   <br>
+ 
   As can be seen, the gate oscillator used in the Pic uses a common Pierce oscillation cicrcuit : it relies on simple inverting amplifier, a feedback resistor RF, and the oscillator circuit with the crystal and two external capacitor C1 and C2.<br>
   An optionnal RS resistor can be added if the crystal drive (provided by the amplifier gain) is to be lowered.<br>
  <a href="https://www.ti.com/lit/an/szza043/szza043.pdf?ts=1728842789584"> From Texas Inbstrument application note</a> :<br>
+ <br>
  <br>
  RF : RF is the feedback resistor of the CMOS inverter and it biases the inverter in its linear region :<br>
  This means that instead of a binary high (ie 5V) or low (0V) at its input and output, both will be around VDD / 2, with VDD = supplied voltage, usually 5V for a PIC)<br>
@@ -34,6 +36,7 @@ Usually, the value chosen is between 1 MΩ and 10Ω, to create some initial nois
 RS : RS isolates the output of the inverter from the crystal and prevents spurious high-frequency oscillation, so that a clean waveform can be obtained. Typical value 3kΩ - 10kΩ. Also used to lower the amplifier drive for low frequency crystal. Normaly not necessary if the drive mode has been correctly selected (XT vs HS). 4MHz crystal, since they could be driven on XT or HS mode, could use a RS in HS mode. But then why not use the internal clock ? :-) <br>
 <br>
 C1 and C2 : used to maintain oscillation and provide the capacitor load (CL) supported by the crystal. Usually 15 - 22 pF for 4 - 20 MHz crystal. C1 & C2 should not in general be < 10pF, since they will not be able to filter noises efficiently, and not above 33pF since it could induce to much power in the crystal.<br>
+<br>
 <a href="https://ww1.microchip.com/downloads/en/appnotes/00849a.pdf">From Microchip AN849 application note</a> :<br> 
 "When the circuit is ringing at the resonant (ie nominal) frequency, charge is transferred back and forth through the crystal or resonator, between the capacitors. Both capacitors, then, work together to sustain the oscillation.<br>
 Generally, they are chosen to be the same value to provide a symmetrical store of energy on both sides of the crystal and are chosen to match the load capacitance specified by the crystal manufacturer."<br>
@@ -68,7 +71,12 @@ Below, from Texas Instrument note, the effect of a RS resistor on the signal :<b
  ![oscillator waveform](https://github.com/user-attachments/assets/c2948a68-4594-457b-8fe8-85bb084d4507)
  
  <br>
- 
+ In this example :<br>
+ - C1 & C2 = 30pF
+ - XC2 (reactance of capacitor at resonant frequency, 25Mhz) = 200Ohms.<br>
+ - VCC = 3.3V<br>
+ <br>
+ The pink and blue waveform clearly are clipped at the top of their shape, signaling an overdrive - the VCC used here is 3.3V.
 
  
  
