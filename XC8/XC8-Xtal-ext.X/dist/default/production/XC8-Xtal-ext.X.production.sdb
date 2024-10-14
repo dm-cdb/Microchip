@@ -1,0 +1,133 @@
+[p GLOBOPT AUTOSTATIC IEEE_DBL IEEE_FLT PIC14 PICREGULAR PICMID ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 12F683 ]
+[d frameptr 0 ]
+"10 D:\Program Files\Microchip\xc8\v2.40\pic\sources\c90\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"4 D:\Program Files\Microchip\xc8\v2.40\pic\sources\c90\common\Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+"6 D:\Program Files\Microchip\xc8\v2.40\pic\sources\c90\pic\__eeprom.c
+[v ___eecpymem __eecpymem `(v  1 e 1 0 ]
+"39
+[v ___memcpyee __memcpyee `(v  1 e 1 0 ]
+"37 D:\Temp\MPLAB-Proj\XC8-Xtal-ext.X\Main.c
+[v _isr isr `II(v  1 e 1 0 ]
+"46
+[v _PicInit PicInit `(v  1 e 1 0 ]
+"57
+[v _main main `(v  1 e 1 0 ]
+"167 C:/Users/cdebalorre/.mchp_packs/Microchip/PIC10-12Fxxx_DFP/1.5.61/xc8\pic\include\proc\pic12f683.h
+[v _GPIO GPIO `VEuc  1 e 1 @5 ]
+[s S162 . 1 `uc 1 GP0 1 0 :1:0 
+`uc 1 GP1 1 0 :1:1 
+`uc 1 GP2 1 0 :1:2 
+`uc 1 GP3 1 0 :1:3 
+`uc 1 GP4 1 0 :1:4 
+`uc 1 GP5 1 0 :1:5 
+]
+"182
+[u S169 . 1 `S162 1 . 1 0 ]
+[v _GPIObits GPIObits `VES169  1 e 1 @5 ]
+[s S130 . 1 `uc 1 GPIF 1 0 :1:0 
+`uc 1 INTF 1 0 :1:1 
+`uc 1 T0IF 1 0 :1:2 
+`uc 1 GPIE 1 0 :1:3 
+`uc 1 INTE 1 0 :1:4 
+`uc 1 T0IE 1 0 :1:5 
+`uc 1 PEIE 1 0 :1:6 
+`uc 1 GIE 1 0 :1:7 
+]
+"260
+[s S139 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 TMR0IF 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 TMR0IE 1 0 :1:5 
+]
+[u S144 . 1 `S130 1 . 1 0 `S139 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES144  1 e 1 @11 ]
+[s S50 . 1 `uc 1 TMR1IF 1 0 :1:0 
+`uc 1 TMR2IF 1 0 :1:1 
+`uc 1 OSFIF 1 0 :1:2 
+`uc 1 CMIF 1 0 :1:3 
+`uc 1 . 1 0 :1:4 
+`uc 1 CCP1IF 1 0 :1:5 
+`uc 1 ADIF 1 0 :1:6 
+`uc 1 EEIF 1 0 :1:7 
+]
+"336
+[s S59 . 1 `uc 1 T1IF 1 0 :1:0 
+`uc 1 T2IF 1 0 :1:1 
+]
+[u S62 . 1 `S50 1 . 1 0 `S59 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES62  1 e 1 @12 ]
+[s S108 . 1 `uc 1 SWDTEN 1 0 :1:0 
+`uc 1 WDTPS 1 0 :4:1 
+]
+"665
+[s S111 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 WDTPS0 1 0 :1:1 
+`uc 1 WDTPS1 1 0 :1:2 
+`uc 1 WDTPS2 1 0 :1:3 
+`uc 1 WDTPS3 1 0 :1:4 
+]
+[u S117 . 1 `S108 1 . 1 0 `S111 1 . 1 0 ]
+[v _WDTCONbits WDTCONbits `VES117  1 e 1 @24 ]
+"700
+[v _CMCON0 CMCON0 `VEuc  1 e 1 @25 ]
+"952
+[v _TRISIO TRISIO `VEuc  1 e 1 @133 ]
+[s S22 . 1 `uc 1 TMR1IE 1 0 :1:0 
+`uc 1 TMR2IE 1 0 :1:1 
+`uc 1 OSFIE 1 0 :1:2 
+`uc 1 CMIE 1 0 :1:3 
+`uc 1 . 1 0 :1:4 
+`uc 1 CCP1IE 1 0 :1:5 
+`uc 1 ADIE 1 0 :1:6 
+`uc 1 EEIE 1 0 :1:7 
+]
+"1023
+[s S31 . 1 `uc 1 T1IE 1 0 :1:0 
+`uc 1 T2IE 1 0 :1:1 
+]
+[u S34 . 1 `S22 1 . 1 0 `S31 1 . 1 0 ]
+[v _PIE1bits PIE1bits `VES34  1 e 1 @140 ]
+[s S78 . 1 `uc 1 SCS 1 0 :1:0 
+`uc 1 LTS 1 0 :1:1 
+`uc 1 HTS 1 0 :1:2 
+`uc 1 OSTS 1 0 :1:3 
+`uc 1 IRCF 1 0 :3:4 
+]
+"1132
+[s S84 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 IRCF0 1 0 :1:4 
+`uc 1 IRCF1 1 0 :1:5 
+`uc 1 IRCF2 1 0 :1:6 
+]
+[u S89 . 1 `S78 1 . 1 0 `S84 1 . 1 0 ]
+[v _OSCCONbits OSCCONbits `VES89  1 e 1 @143 ]
+"1721
+[v _ANSEL ANSEL `VEuc  1 e 1 @159 ]
+"29 D:\Temp\MPLAB-Proj\XC8-Xtal-ext.X\Main.c
+[v _FAILFLAG FAILFLAG `b  1 e 0 0 ]
+"30
+[v _counter counter `uc  1 e 1 0 ]
+"31
+[v _retry retry `uc  1 e 1 0 ]
+"57
+[v _main main `(v  1 e 1 0 ]
+{
+"73
+[v main@i i `uc  1 a 1 5 ]
+"107
+} 0
+"46
+[v _PicInit PicInit `(v  1 e 1 0 ]
+{
+"55
+} 0
+"37
+[v _isr isr `II(v  1 e 1 0 ]
+{
+"44
+} 0
