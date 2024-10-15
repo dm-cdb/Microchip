@@ -103,19 +103,19 @@ Below, from Texas Instrument note, the effect of a RS resistor on the signal :<b
   - OSTS<3> : status bit ; read 1 = external clock specified in FOSC ; read 0 = internal clock.
   <br>
   <br>
-  <u> Clock fail safe mechanism</u><br>
+  <u> Clock fail safe mechanism :</u><br>
   <br>
   Setting the FCMEN<11> bit in the configuration register activate a clock fail safe mechanisme.<br>
   The PIC will monitor the clock signal, and if error conditions occur, will fall back on the internal clock as configured in OSSCON <IRCF> bits.
   When an external clock failure is detected, the PIC switchover the internal clock and set the OSFIF bit of the PIR1 register. If the interrupt is enabled for this event, an ISR routine can be called to handle the situation.<br>
   <br>
-  <u>Recovery</u><br>
+  <u>Recovery :</u><br>
   <br>
   A recovery can be tried writing the SCS bit of OSCCON register to 0 (clock from FOSC config) - a kind of soft reset for transient failure (try connect a probe on osc1 port - even a simple jumper).<br>
   Alternatively, we can put the device on SLEEP ; this will stop the external clock. If watchdog is set, the clock used is the internal low frequency LFINTOSC @ 31kHz, and will wake up the device after a specified delay.<br>
   The device will then tries to reinitiate the external clock.<br>
   <br>
- <u>Watchdog timer</u><br>
+ <u>Watchdog timer :</u><br>
  The watchdog timer (WDT) can be activated through the WDTCON register.<br>
  - Setting SWDTEN <0> to 1 activate the watchdog timer.<br>
   - WDTPS<3:0>: Watchdog Timer Period Select bits (select the prescaler). Note the watchdog uses exclusively the LPINTOSC clock (31kHz - 31µs period). The default prescaler 1:512 => 31 * 512 = 16ms. 1:2048 => 64ms.<br>
@@ -124,6 +124,15 @@ Below, from Texas Instrument note, the effect of a RS resistor on the signal :<b
   When in sleep mode, if WDT has not been disabled, the device will wake up after the watchdog delay (Watchdog Timer wake-up). WDT is not disabled during SLEEP mode.<br>
   After waking up, the device will use the internal clock, tests that the external clock is stable, and switchover if all is cleared (the test takes around 1024 instruction cycles)<br>
   The OSTS bit of OSCCON register is monitoried to check that the device is really working on the external clock.<br>
+  <br>
+  <u>Other peripherals :</u><br>
+  Three leds or connected to GPIO0-1-2 (for example green, orange, red).<br>
+  - GPIO0 HIGH when device run on external clock normally.<br>
+  - GPIO2 HIGH when a failure has been detected by the device fail safe mechanisme. The interrupt is caught, a "fail" flag is marked, and the program run a delay before trying to recover.<br>
+    If after 5 recovery attempts the device is still in failed external clock mode, a SLEEP is initiated with the watchdog delay.<br>
+    During all this time, the device run on internal clock as specified in IRCF of OSCCON register bits.<br>
+ - GPIO1 is HIGH when running on internal clock with fail flag cleared.
+  
   
  
  
