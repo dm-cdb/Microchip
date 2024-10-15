@@ -17,7 +17,7 @@ Below is a schematic of a typical external quartz connections to a 12F683 taken 
 ![pic-external-crystal-operation](https://github.com/user-attachments/assets/7f3bb083-f277-457f-afee-b27d381fbccb)
  <br>
 <br>
-- The crystal is connected across :<br>
+The crystal is connected across :<br>
  - OSC1 pin, located at pin2 (GP5) <br>
  - OSC2 pin, located at pin3 (GP4) <br>
 
@@ -28,7 +28,7 @@ Below is a schematic of a typical external quartz connections to a 12F683 taken 
   <br>
  
   The topology used by the Pic to drive the crystal is a basic Pierce oscillation cicrcuit : it relies on a simple inverting amplifier, a feedback resistor RF, and the oscillator circuit with the crystal and the two capacitors C1 and C2.<br>
-  An optionnal RS resistor can be added if the "drive" (or current, or gain) provided by the Pic amplifier is to powerful for the crystal, and needs to be lowered.<br>
+  An optionnal RS resistor can be added if the "drive" (or current, or gain) provided by the Pic amplifier is too powerful for the crystal, and needs to be somehow lowered.<br>
   <br>
  <a href="https://www.ti.com/lit/an/szza043/szza043.pdf?ts=1728842789584"> From Texas Inbstrument application note</a> :<br>
  
