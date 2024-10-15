@@ -21,8 +21,8 @@ The crystal is connected across :<br>
  - OSC1 pin, located at pin2 (GP5) <br>
  - OSC2 pin, located at pin3 (GP4) <br>
 
- Capacitors C1 on OSC1 and ground, and C2 on OSC2 and ground, are used to maintain a stable oscillation, and some typicals values are provided by the table below, from the datasheet :<br>
  A crystal and two capacitors are then pretty much all is needed. The rest is software configuration.<br>
+ Capacitors C1 on OSC1 and ground, and C2 on OSC2 and ground, are used to maintain a stable oscillation, and some typicals values are provided by the table below, from the datasheet :<br>
  <br>
   ![capacitors for xtal](https://github.com/user-attachments/assets/d344e37d-e252-4226-a082-f7fc42f0ff1f)
   <br>
@@ -30,7 +30,7 @@ The crystal is connected across :<br>
   The topology used by the Pic to drive the crystal is a basic Pierce oscillation cicrcuit : it relies on a simple inverting amplifier, a feedback resistor RF, and the oscillator circuit with the crystal and the two capacitors C1 and C2.<br>
   An optionnal RS resistor can be added if the "drive" (or current, or gain) provided by the Pic amplifier is too powerful for the crystal, and needs to be somehow lowered.<br>
   <br>
- <a href="https://www.ti.com/lit/an/szza043/szza043.pdf?ts=1728842789584"> From Texas Inbstrument application note</a> :<br>
+ <a href="https://www.ti.com/lit/an/szza043/szza043.pdf?ts=1728842789584"> From Texas Instrument application note</a> :<br>
  
  RF : RF is the feedback resistor of the CMOS inverter and it biases the inverter in its linear region :<br>
  This means that instead of a binary high (ie 5V) or low (0V) at its input and output, both will be around VDD / 2, with VDD = supplied voltage, usually 5V for a PIC)<br>
