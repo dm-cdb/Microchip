@@ -21,8 +21,8 @@ The crystal is connected across :<br>
  - OSC1 pin, located at pin2 (GP5) <br>
  - OSC2 pin, located at pin3 (GP4) <br>
 
- A crystal and two capacitors are then pretty much all is needed. The rest is software configuration.<br>
- Capacitors C1 on OSC1 and ground, and C2 on OSC2 and ground, are used to maintain a stable oscillation, and some typicals values are provided by the table below, from the datasheet :<br>
+ Capacitors C1 on OSC1 and ground, and C2 on OSC2 and ground, are used to maintain a stable oscillation.<br>
+ A crystal and two capacitors are then pretty much all is needed ; the rest is software configuration. Some typicals values are provided by the table below, from the 12F683 datasheet :<br>
  <br>
   ![capacitors for xtal](https://github.com/user-attachments/assets/d344e37d-e252-4226-a082-f7fc42f0ff1f)
   <br>
@@ -90,7 +90,7 @@ Below, from Texas Instrument note, the effect of a RS resistor on the signal :<b
  <u>The program :</u><br>
  <br>
  To use an external clock, we first need to specify the clock source in the config register FOSC<2:0> bits. According to the mode selected, it activates and/or disable certain GPIO's on the PIC.<br>
- For example :
+ For example :<br>
   - selecting INTOSC (101) activates internal clock and will output a clock signal on OSC2 (thereby disabling GPIO4).<br>
   - selecting INTOSCIO (100) activates an internal clock, and leave GPIO4 & 5 available for other features.<br>
   - selecting XT (001) activates external clock with medium gain ; OSC1 & OSC2 are then reserved and all other features on these pins are disabled.<br>
