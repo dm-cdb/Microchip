@@ -59,7 +59,6 @@ Suppose we use the recommended 22pF capacitors as C1 & C2 to work with a 16MHz c
 <br>
 Also please note : C1 and C2 form a capacitor voltage divider that determines the degree of feedback. The feedback factor is given by f = C1 / C2.<br>
 <br>
-<br>
 How it works :<br>
 In order for an amplified circuit to oscillate, it needs 2 conditions :<br>
 - The gain of the circuit must be > 1 to maintain the oscillation, otherwise it will fade away.<br>
@@ -90,19 +89,18 @@ Below, from Texas Instrument note, the effect of a RS resistor on the signal :<b
  <br>
  <u>The program :</u><br>
  <br>
- To use an external clock, we first need to specify the clock source in the config register FOSC<2:0> bits. According to the mode selected, it activates and/or disable certain GPIO on the PIC.<br>
+ To use an external clock, we first need to specify the clock source in the config register FOSC<2:0> bits. According to the mode selected, it activates and/or disable certain GPIO's on the PIC.<br>
  For example :
-  - selecting INTOSC (101) activates internal clock and will output a clock on OSC2 (thereby disabling GPIO4).<br>
+  - selecting INTOSC (101) activates internal clock and will output a clock signal on OSC2 (thereby disabling GPIO4).<br>
   - selecting INTOSCIO (100) activates an internal clock, and leave GPIO4 & 5 available for other features.<br>
-  - selecting XT (001) activates external clock with medium gain ; OSC1 & OSC2 are then reserved and all other features on these pins disabled.<br>
+  - selecting XT (001) activates external clock with medium gain ; OSC1 & OSC2 are then reserved and all other features on these pins are disabled.<br>
   - selecting HS (010) likewise activates external clock with high gain (roughly crystal > 4MHz).<br>
   <br>
-  The other register to configer for a dual clock configuration is the oscillator control register (OSCCON) :<br>
+  The other register to configure for a dual clock configuration is the oscillator control register (OSCCON) :<br>
   - IRCF<2:0> : control the internal clock frequency : default = 4MHz (110) ; we'll use 8MHz (111).<br>
-  - SCS<0> : control if the internal clock as set in IRCF is used (if set to 1), or the clock as set in FOSC bits of config register - in our case the external clock (if set to 0).<br>
-  - OSTS<3> : status bit ; read 1 = external clock specified in FOSC ; read 0 = internal clock.
-  <br>
-  <br>
+  - SCS<0> : enable the programmer to to control the clock source. If set to 1,the internal clock as set in IRCF bits is used ; If set to 0, the clock defined in FOSC bits of config register - in our case the external clock.<br>
+  - OSTS<3> : a status bit ; read 1 = device run on external clock specified in FOSC ; read 0 = internal clock.
+ <br>
   <u> Clock fail safe mechanism :</u><br>
   <br>
   Setting the FCMEN<11> bit in the configuration register activate a clock fail safe mechanisme.<br>
