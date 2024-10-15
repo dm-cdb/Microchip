@@ -72,8 +72,8 @@ In order for an amplified circuit to oscillate, it needs 2 conditions :<br>
  - the right capacitance load C1 & C2.<br>
  <br>
 Troubleshooting :<br>
-You can probe the oscillated signal with an oscilloscope probe at OSC2 pin (don't use OSC1 pin for this ; the internal oscilloscope probe capacitance will load to much the signal).
-At minimum use the x10 probe mode - x100 is recommended.
+You can probe the oscillated signal with an oscilloscope probe at OSC2 pin (don't use OSC1 pin for this ; the internal oscilloscope probe capacitance will load to much the signal).<br>
+At minimum use a x10 probe mode - x100 is recommended for minimal interference with the circuit.<br>
 Below, from Texas Instrument note, the effect of a RS resistor on the signal :<br>
 <br>
 
@@ -82,10 +82,10 @@ Below, from Texas Instrument note, the effect of a RS resistor on the signal :<b
  <br>
  In this example :<br>
  - C1 & C2 = 30pF<br>
- - XC2 (reactance of capacitor at resonant frequency, 25Mhz) = 200Ohms.<br>
+ - XC2 (reactance of 30pF capacitor at resonant frequency, 25Mhz) = 200Ohms.<br>
  - VCC = 3.3V<br>
  <br>
- The pink and blue waveform clearly are clipped at the top of their shape, signaling an overdrive - the VCC used here is 3.3V.
+ The pink and blue waveform clearly are clipped at the top of their shape, signaling a slight overdrive - the VCC used here is 3.3V.
  <br>
  <br>
  <u>The program :</u><br>
@@ -102,7 +102,28 @@ Below, from Texas Instrument note, the effect of a RS resistor on the signal :<b
   - SCS<0> : control if the internal clock as set in IRCF is used (if set to 1), or the clock as set in FOSC bits of config register - in our case the external clock (if set to 0).<br>
   - OSTS<3> : status bit ; read 1 = external clock specified in FOSC ; read 0 = internal clock.
   <br>
+  <br>
   <u> Clock fail safe mechanism</u><br>
+  <br>
+  Setting the FCMEN<11> bit in the configuration register activate a clock fail safe mechanisme.<br>
+  The PIC will monitor the clock signal, and if error conditions occur, will fall back on the internal clock as configured in OSSCON <IRCF> bits.
+  When an external clock failure is detected, the PIC switchover the internal clock and set the OSFIF bit of the PIR1 register. If the interrupt is enabled for this event, an ISR routine can be called to handle the situation.<br>
+  <br>
+  <u>Recovery</u><br>
+  <br>
+  A recovery can be tried writing the SCS bit of OSCCON register to 0 (clock from FOSC config) - a kind of soft reset for transient failure (try connect a probe on osc1 port - even a simple jumper).<br>
+  Alternatively, we can put the device on SLEEP ; this will stop the external clock. If watchdog is set, the clock used is the internal low frequency LFINTOSC @ 31kHz, and will wake up the device after a specified delay.<br>
+  The device will then tries to reinitiate the external clock.<br>
+  <br>
+ <u>Watchdog timer</u><br>
+ The watchdog timer (WDT) can be activated through the WDTCON register.<br>
+ - Setting SWDTEN <0> to 1 activate the watchdog timer.<br>
+  - WDTPS<3:0>: Watchdog Timer Period Select bits (select the prescaler). Note the watchdog uses exclusively the LPINTOSC clock (31kHz - 31µs period). The default prescaler 1:512 => 31 * 512 = 16ms. 1:2048 => 64ms.<br>
+  <br>
+  When a program instruction is "stuck", the device will be reset after the watchdog delay.<br>
+  When in sleep mode, if WDT has not been disabled, the device will wake up after the watchdog delay (Watchdog Timer wake-up). WDT is not disabled during SLEEP mode.<br>
+  After waking up, the device will use the internal clock, tests that the external clock is stable, and switchover if all is cleared (the test takes around 1024 instruction cycles)<br>
+  The OSTS bit of OSCCON register is monitoried to check that the device is really working on the external clock.<br>
   
  
  
