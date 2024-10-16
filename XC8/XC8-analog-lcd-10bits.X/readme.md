@@ -1,4 +1,5 @@
 This project shows an example of ADC result displayed on standard LCD 2x16 chars screen,like the LCM1602A.<br>
+The 74HC164 shift register enable the use of only 3 GPIO's on the PIC.
 It has a rudimentary and light LCD library that can be reused for other projects.<br>
 Note : 8bit controllers like the PIC 12F683 do NOT like floating point operation. The ADC result is thus transformed from V to mV:
 - The adc conversion full result is stored in a 24 bits unsigned int variable.
