@@ -4,3 +4,5 @@ This directory contains some projects written with Microchip MPLab XC8 C compile
 - Basic serial/UART bit bang code
 - ADC reading with LCD display
 - PIC driven by external crystal clock
+
+Note : setup diagrams when available are made by <a href="https://simulide.com/p/">SimulIDE circuit simulator</a>
