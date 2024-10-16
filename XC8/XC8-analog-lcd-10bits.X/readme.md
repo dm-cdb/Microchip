@@ -6,4 +6,5 @@ Note : 8bit controllers like the PIC 12F683 do NOT like floating point operation
 - Final operation, the result is divided by 1024, shifting by 10 bits to the right.
 The end product is then translated to BDC for LCD or serial reading.<br>
 
-t
+![analog-lcd](https://github.com/user-attachments/assets/559606ad-142d-4977-b5c3-ac738cdbc8e8)
+
