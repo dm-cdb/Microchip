@@ -16,3 +16,6 @@ So the delay from the very start of the transmission to the first bit capture wi
 This program propose a RX and TX routine, and some tests where a user can turn on/off leds according to serial input.
 Of course this is mainly for PIC w/o hardware serial/UART support, like the PIC12F683.
 If the need is only to display information or debug message to a terminal, just connect a single tx pin, and discard the RX code.
+
+
+![serial-leds](https://github.com/user-attachments/assets/0ffffe54-42a7-45e1-8fef-ac7e42062ccd)
