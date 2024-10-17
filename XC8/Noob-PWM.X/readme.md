@@ -31,7 +31,7 @@ The code initiate a 500Hz PWM signal (device internal clock = 4MHz), with around
  - CCPR1L = 62 <br>
 <br>
 GP4 pin is set as analog input and ADC channel to convert a voltage value into ADRESH register (left justified).<br>
-The ADRESH value is then copied to CCPR1L. We then have a voltage controled PWM on CCP1 pin.<br>
+The ADRESH value is then copied to CCPR1L. We therefore have a voltage controled PWM on CCP1 pin.<br>
 <br>
 
 ![pic-pulse width-modulated](https://github.com/user-attachments/assets/c1413076-d4b4-4ac7-9980-4ad24b57aec2)
