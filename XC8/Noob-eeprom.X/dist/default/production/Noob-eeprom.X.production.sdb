@@ -1,0 +1,246 @@
+[p GLOBOPT AUTOSTATIC IEEE_DBL IEEE_FLT PIC14 PICREGULAR PICMID ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 12F683 ]
+[d frameptr 0 ]
+"14 D:\Temp\MPLAB-Proj/XC8-template-lcd.X/lcd.c
+[v _init_Lcd init_Lcd `(v  1 e 1 0 ]
+"33
+[v _do_Lcd do_Lcd `(v  1 e 1 0 ]
+"42
+[v _do_Shiftr do_Shiftr `(v  1 e 1 0 ]
+"55
+[v _pos_Lcd pos_Lcd `(v  1 e 1 0 ]
+"62
+[v _send_Nibbles send_Nibbles `(v  1 e 1 0 ]
+"77
+[v _send_Text send_Text `(v  1 e 1 0 ]
+"85
+[v _reset_Lcd reset_Lcd `(v  1 e 1 0 ]
+"10 D:\Program Files\Microchip\xc8\v2.40\pic\sources\c90\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"4 D:\Program Files\Microchip\xc8\v2.40\pic\sources\c90\common\Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+"6 D:\Program Files\Microchip\xc8\v2.40\pic\sources\c90\pic\__eeprom.c
+[v ___eecpymem __eecpymem `(v  1 e 1 0 ]
+"39
+[v ___memcpyee __memcpyee `(v  1 e 1 0 ]
+"47 D:\Temp\MPLAB-Proj\Noob-eeprom.X\main.c
+[v _isr isr `II(v  1 e 1 0 ]
+"56
+[v _writeEEprom writeEEprom `(v  1 e 1 0 ]
+"71
+[v _readEEprom readEEprom `(uc  1 e 1 0 ]
+"79
+[v _picInit picInit `(v  1 e 1 0 ]
+"89
+[v _main main `(v  1 e 1 0 ]
+"167 C:/Users/cdebalorre/.mchp_packs/Microchip/PIC10-12Fxxx_DFP/1.5.61/xc8\pic\include\proc\pic12f683.h
+[v _GPIO GPIO `VEuc  1 e 1 @5 ]
+[s S43 . 1 `uc 1 GP0 1 0 :1:0 
+`uc 1 GP1 1 0 :1:1 
+`uc 1 GP2 1 0 :1:2 
+`uc 1 GP3 1 0 :1:3 
+`uc 1 GP4 1 0 :1:4 
+`uc 1 GP5 1 0 :1:5 
+]
+"182
+[u S50 . 1 `S43 1 . 1 0 ]
+[v _GPIObits GPIObits `VES50  1 e 1 @5 ]
+[s S201 . 1 `uc 1 GPIF 1 0 :1:0 
+`uc 1 INTF 1 0 :1:1 
+`uc 1 T0IF 1 0 :1:2 
+`uc 1 GPIE 1 0 :1:3 
+`uc 1 INTE 1 0 :1:4 
+`uc 1 T0IE 1 0 :1:5 
+`uc 1 PEIE 1 0 :1:6 
+`uc 1 GIE 1 0 :1:7 
+]
+"260
+[s S210 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 TMR0IF 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 TMR0IE 1 0 :1:5 
+]
+[u S215 . 1 `S201 1 . 1 0 `S210 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES215  1 e 1 @11 ]
+[s S119 . 1 `uc 1 TMR1IF 1 0 :1:0 
+`uc 1 TMR2IF 1 0 :1:1 
+`uc 1 OSFIF 1 0 :1:2 
+`uc 1 CMIF 1 0 :1:3 
+`uc 1 . 1 0 :1:4 
+`uc 1 CCP1IF 1 0 :1:5 
+`uc 1 ADIF 1 0 :1:6 
+`uc 1 EEIF 1 0 :1:7 
+]
+"336
+[s S128 . 1 `uc 1 T1IF 1 0 :1:0 
+`uc 1 T2IF 1 0 :1:1 
+]
+[u S131 . 1 `S119 1 . 1 0 `S128 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES131  1 e 1 @12 ]
+"700
+[v _CMCON0 CMCON0 `VEuc  1 e 1 @25 ]
+"952
+[v _TRISIO TRISIO `VEuc  1 e 1 @133 ]
+[s S91 . 1 `uc 1 TMR1IE 1 0 :1:0 
+`uc 1 TMR2IE 1 0 :1:1 
+`uc 1 OSFIE 1 0 :1:2 
+`uc 1 CMIE 1 0 :1:3 
+`uc 1 . 1 0 :1:4 
+`uc 1 CCP1IE 1 0 :1:5 
+`uc 1 ADIE 1 0 :1:6 
+`uc 1 EEIE 1 0 :1:7 
+]
+"1023
+[s S100 . 1 `uc 1 T1IE 1 0 :1:0 
+`uc 1 T2IE 1 0 :1:1 
+]
+[u S103 . 1 `S91 1 . 1 0 `S100 1 . 1 0 ]
+[v _PIE1bits PIE1bits `VES103  1 e 1 @140 ]
+[s S167 . 1 `uc 1 SCS 1 0 :1:0 
+`uc 1 LTS 1 0 :1:1 
+`uc 1 HTS 1 0 :1:2 
+`uc 1 OSTS 1 0 :1:3 
+`uc 1 IRCF 1 0 :3:4 
+]
+"1132
+[s S173 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 IRCF0 1 0 :1:4 
+`uc 1 IRCF1 1 0 :1:5 
+`uc 1 IRCF2 1 0 :1:6 
+]
+[u S178 . 1 `S167 1 . 1 0 `S173 1 . 1 0 ]
+[v _OSCCONbits OSCCONbits `VES178  1 e 1 @143 ]
+"1624
+[v _EEDAT EEDAT `VEuc  1 e 1 @154 ]
+"1662
+[v _EEADR EEADR `VEuc  1 e 1 @155 ]
+[s S150 . 1 `uc 1 RD 1 0 :1:0 
+`uc 1 WR 1 0 :1:1 
+`uc 1 WREN 1 0 :1:2 
+`uc 1 WRERR 1 0 :1:3 
+]
+"1682
+[u S155 . 1 `S150 1 . 1 0 ]
+[v _EECON1bits EECON1bits `VES155  1 e 1 @156 ]
+"1707
+[v _EECON2 EECON2 `VEuc  1 e 1 @157 ]
+"1721
+[v _ANSEL ANSEL `VEuc  1 e 1 @159 ]
+"32 D:\Temp\MPLAB-Proj\Noob-eeprom.X\main.c
+[v _B1 B1 `uc  1 e 1 0 ]
+"33
+[v _myText1 myText1 `DC[18]uc  1 e 18 0 ]
+"34
+[v _myText2 myText2 `DC[13]uc  1 e 13 0 ]
+"35
+[v _myText3 myText3 `DC[12]uc  1 e 12 0 ]
+"36
+[v _myText4 myText4 `DC[11]uc  1 e 11 0 ]
+"37
+[v _myText5 myText5 `DC[8]uc  1 e 8 0 ]
+"38
+[v _EEFLAG EEFLAG `b  1 e 0 0 ]
+"89
+[v _main main `(v  1 e 1 0 ]
+{
+"124
+[v main@i_318 i `uc  1 a 1 11 ]
+"112
+[v main@i_316 i `uc  1 a 1 9 ]
+"97
+[v main@B0 B0 `uc  1 a 1 10 ]
+[v main@i i `uc  1 a 1 8 ]
+"143
+} 0
+"56
+[v _writeEEprom writeEEprom `(v  1 e 1 0 ]
+{
+[v writeEEprom@addr addr `uc  1 a 1 wreg ]
+[v writeEEprom@addr addr `uc  1 a 1 wreg ]
+[v writeEEprom@data data `uc  1 p 1 2 ]
+[v writeEEprom@addr addr `uc  1 a 1 3 ]
+"69
+} 0
+"77 D:\Temp\MPLAB-Proj/XC8-template-lcd.X/lcd.c
+[v _send_Text send_Text `(v  1 e 1 0 ]
+{
+[v send_Text@s s `*.24DCuc  1 a 1 wreg ]
+"78
+[v send_Text@i i `uc  1 a 1 4 ]
+"77
+[v send_Text@s s `*.24DCuc  1 a 1 wreg ]
+[v send_Text@n n `uc  1 p 1 0 ]
+[v send_Text@s s `*.24DCuc  1 a 1 3 ]
+"83
+} 0
+"85
+[v _reset_Lcd reset_Lcd `(v  1 e 1 0 ]
+{
+"91
+} 0
+"71 D:\Temp\MPLAB-Proj\Noob-eeprom.X\main.c
+[v _readEEprom readEEprom `(uc  1 e 1 0 ]
+{
+[v readEEprom@addr addr `uc  1 a 1 wreg ]
+[v readEEprom@addr addr `uc  1 a 1 wreg ]
+[v readEEprom@addr addr `uc  1 a 1 2 ]
+"77
+} 0
+"55 D:\Temp\MPLAB-Proj/XC8-template-lcd.X/lcd.c
+[v _pos_Lcd pos_Lcd `(v  1 e 1 0 ]
+{
+[v pos_Lcd@x x `uc  1 a 1 wreg ]
+"56
+[v pos_Lcd@pos pos `uc  1 a 1 3 ]
+"55
+[v pos_Lcd@x x `uc  1 a 1 wreg ]
+[v pos_Lcd@y y `uc  1 p 1 0 ]
+[v pos_Lcd@x x `uc  1 a 1 2 ]
+"60
+} 0
+"79 D:\Temp\MPLAB-Proj\Noob-eeprom.X\main.c
+[v _picInit picInit `(v  1 e 1 0 ]
+{
+"87
+} 0
+"14 D:\Temp\MPLAB-Proj/XC8-template-lcd.X/lcd.c
+[v _init_Lcd init_Lcd `(v  1 e 1 0 ]
+{
+"31
+} 0
+"62
+[v _send_Nibbles send_Nibbles `(v  1 e 1 0 ]
+{
+[v send_Nibbles@data data `uc  1 a 1 wreg ]
+"63
+[v send_Nibbles@hiB hiB `uc  1 a 1 9 ]
+[v send_Nibbles@lowB lowB `uc  1 a 1 8 ]
+"62
+[v send_Nibbles@data data `uc  1 a 1 wreg ]
+[v send_Nibbles@rs rs `a  1 p 1 5 ]
+[v send_Nibbles@data data `uc  1 a 1 7 ]
+"75
+} 0
+"42
+[v _do_Shiftr do_Shiftr `(v  1 e 1 0 ]
+{
+[v do_Shiftr@value value `uc  1 a 1 wreg ]
+"43
+[v do_Shiftr@i i `uc  1 a 1 4 ]
+"42
+[v do_Shiftr@value value `uc  1 a 1 wreg ]
+[v do_Shiftr@value value `uc  1 a 1 3 ]
+"53
+} 0
+"33
+[v _do_Lcd do_Lcd `(v  1 e 1 0 ]
+{
+"40
+} 0
+"47 D:\Temp\MPLAB-Proj\Noob-eeprom.X\main.c
+[v _isr isr `II(v  1 e 1 0 ]
+{
+"54
+} 0
