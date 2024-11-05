@@ -9,8 +9,8 @@
 #include <xc.h>
 #include "serial.h"
 
-static volatile unsigned char txBuffer __at(0x70); //Force in shared ram - easier to debug
-static volatile unsigned char rxBuffer __at(0x71);
+static volatile unsigned char txBuffer;
+static volatile unsigned char rxBuffer;
 static volatile __bit TXFLAG = 0;
 static volatile __bit RXFLAG = 0;
 static volatile __bit RXREADY = 0;
@@ -36,7 +36,7 @@ unsigned char rx_UART() {
     // Process incoming byte
     for (unsigned char i = 1; i; i = (unsigned char) (i << 1)) {
             if(RX == 1) { (rxBuffer |= i) ;}    // Serial data are transmitted LSB first
-            while (!PIR1bits.TMR2IF);           // Usual 104µs delay
+            while (!PIR1bits.TMR2IF);           // Usual 104Âµs delay
             PIR1bits.TMR2IF = 0;            
     }
     // Check status of stop bit ; we suppose all went well
