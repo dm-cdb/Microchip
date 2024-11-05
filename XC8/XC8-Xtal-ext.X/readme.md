@@ -5,7 +5,7 @@ The 12F683 has two internal programmable clocks :
  - A high frequency internal oscillator (HFINTOSC), running at 8MHz. The frequency can be adjusted in the OSCCON register (IRCF bits), from 125kHz to its nominal 8MHz (default to 4MHz, IRCF = 110).
 
 An external clock up to 20MHz can be easily driven by the PIC should the need occurs. We'll see in this project how to setup an external crystal oscillator of 16MHz, and how to switch between the internal and the external clock.<br>
-Please note that using different external and internal clock will affect the built-in XC8 __delay() functions, as they rely on the DEFINE _XTAL_FREQ precompiler constant.<br>
+Please note that using different external and internal clock will affect the built-in XC8 __delay() functions, as they rely on the DEFINE _XTAL_FREQ compiler preprocessor directive.<br>
 Timer behaviours will also change, as they are synchronized on the instruction cycle (Fcy), which is clock frequency / 4 (Fosc /4).<br>
   - At 8Mhz the instruction frequency Fcy would be 2MHz, and an instruction period or timer tick will last 500ns.
   - At 16Mhz the  instruction Fcy would be 4MHz, and an instruction period or timer tick will last 250ns.
