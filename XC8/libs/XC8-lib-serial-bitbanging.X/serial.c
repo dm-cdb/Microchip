@@ -27,8 +27,8 @@ unsigned char rx_UART() {
     INTCONbits.INTF =0;
     T2CONbits.TMR2ON = 0;    
     while(!INTCONbits.INTF);
-    RXFLAG = 1;
     T2CONbits.TMR2ON = 1;
+    RXFLAG = 1;    
     while (!PIR1bits.TMR2IF);            // This while() uses 5us per loop @4Mhz
     _delay(BITDY >> 1);                  // Add half a delay and start capturing bits
     TMR2 = 0;                            // Then reset timer, begin rx
