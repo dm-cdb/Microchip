@@ -25,7 +25,8 @@ void init_UART(void) {
 unsigned char rx_UART() {
     if (TXFLAG){return 24;}                 // Line not ready - for bidir rx/tx line - 24 = CAN char
     INTCONbits.INTF =0;
-    T2CONbits.TMR2ON = 0;    
+    T2CONbits.TMR2ON = 0;
+    PIR1bits.TMR2IF = 0;
     while(!INTCONbits.INTF);
     T2CONbits.TMR2ON = 1;
     RXFLAG = 1;    
