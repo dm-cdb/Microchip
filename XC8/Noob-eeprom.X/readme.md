@@ -24,7 +24,7 @@ A read operation is far more simple :<br>
 <br>
 Warning : The EECON1, EEDAT and EEADR registers should not be modified during a data EEPROM write (WR bit = 1).
 <br>
-Below is a schematic of the project the led is active during write operation) :
+Below is a schematic of the project : the led is active during write operation.
 <br><br>
 
 ![pic-eeprom](https://github.com/user-attachments/assets/b1307967-2775-4759-83d3-0b718090a080)
