@@ -25,10 +25,12 @@ void init_UART(void) {
 unsigned char rx_UART() {
     if (TXFLAG){return 24;}                 // Line not ready - for bidir rx/tx line - 24 = CAN char
     INTCONbits.INTF =0;
-    T2CONbits.TMR2ON = 0;    
+    T2CONbits.TMR2ON = 0;
+    PIR1bits.TMR2IF = 0;    
     while(!INTCONbits.INTF);
-    RXFLAG = 1;
     T2CONbits.TMR2ON = 1;
+    RXFLAG = 1;
+    
     while (!PIR1bits.TMR2IF);            // This while() uses 5us per loop @4Mhz
     _delay(BITDY >> 1);                  // Add half a delay and start capturing bits
     TMR2 = 0;                            // Then reset timer, begin rx
