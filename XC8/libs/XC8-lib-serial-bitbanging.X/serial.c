@@ -9,8 +9,8 @@
 #include <xc.h>
 #include "serial.h"
 
-static volatile unsigned char txBuffer;
-static volatile unsigned char rxBuffer;
+static volatile unsigned char txBuffer __at(0x70); //Force in shared ram - easier to debug
+static volatile unsigned char rxBuffer __at(0x71);
 static volatile __bit TXFLAG = 0;
 static volatile __bit RXFLAG = 0;
 static volatile __bit RXREADY = 0;
@@ -20,24 +20,16 @@ void init_UART(void) {
     OPTION_REGbits.INTEDG = 0;          // Interrupt on falling edge of GP2 - UART start bit goes low
     TMR2 = 0;
     PR2 = BITDY;
+    TX = 1;                             // TX line needs a setup HIGH
 }
 
 unsigned char rx_UART() {
     if (TXFLAG){return 24;}                 // Line not ready - for bidir rx/tx line - 24 = CAN char
     INTCONbits.INTF =0;
-    T2CONbits.TMR2ON = 0;
-<<<<<<< HEAD
-    PIR1bits.TMR2IF = 0;    
+    T2CONbits.TMR2ON = 0;    
     while(!INTCONbits.INTF);
-    T2CONbits.TMR2ON = 1;
     RXFLAG = 1;
-    
-=======
-    PIR1bits.TMR2IF = 0;
-    while(!INTCONbits.INTF);
     T2CONbits.TMR2ON = 1;
-    RXFLAG = 1;    
->>>>>>> 7b7fbfc9b43686ef10719d07f5a2426ccb09de00
     while (!PIR1bits.TMR2IF);            // This while() uses 5us per loop @4Mhz
     _delay(BITDY >> 1);                  // Add half a delay and start capturing bits
     TMR2 = 0;                            // Then reset timer, begin rx
@@ -45,7 +37,7 @@ unsigned char rx_UART() {
     // Process incoming byte
     for (unsigned char i = 1; i; i = (unsigned char) (i << 1)) {
             if(RX == 1) { (rxBuffer |= i) ;}    // Serial data are transmitted LSB first
-            while (!PIR1bits.TMR2IF);           // Usual 104Âµs delay
+            while (!PIR1bits.TMR2IF);           // Usual 104µs delay
             PIR1bits.TMR2IF = 0;            
     }
     // Check status of stop bit ; we suppose all went well

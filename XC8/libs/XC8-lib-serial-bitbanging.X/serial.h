@@ -11,18 +11,7 @@
  * Created on 2 novembre 2024, 14:19
  */
 #include <xc.h>
-
-#ifndef _XTAL_FREQ
-#define _XTAL_FREQ  4000000     // Needed for built-in  __delay_us(x) & __delay_ms(x)
-#endif
-
-#ifndef TX
-#define TX GPIObits.GP1         // UART TX pin
-#endif
-
-#ifndef RX
-#define RX GPIObits.GP2         // UART RX pin - on external interrupt pin
-#endif
+#include "common.h"
 
 #ifndef SERIAL_H
 #define	SERIAL_H
