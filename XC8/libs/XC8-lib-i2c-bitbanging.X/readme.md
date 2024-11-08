@@ -1,4 +1,5 @@
-This is a basic, lightweight library for i2c communication protocol.<br>
+This is a basic, lightweight library for i2c communication protocol, intended for microcontroller without hardware, dedicated, i2c ports.<br>
+To be used with I2C standard mode (100Kbps) ; not tested on higher speed. See i2c_bb.h for delay timings used. It is not advised to run the controler with clock < 4MHz.<br> 
 I2c protol is a serial data communication protocol in master/slave mode, using two wires for data and clocking.<br>
 Each device is targeted via a 7bits address - the last bit being use to command R (1) or W(0) operation.<br>
 The code is based on Microchip AN1488 "Bit Banging I2C™ on Mid-Range MCUs with the XC8 C Compiler", and the source is available on Microchip website.<br>
