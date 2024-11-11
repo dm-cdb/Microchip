@@ -9,6 +9,14 @@ struct temp_res {
     unsigned char alert;  // Alert flag
 };
 </code>
+The decimal part is coded on 4 bits, that is 16 step from 0 < dec < 1. The default resolution is then 0.0625 (1/16).<br>
+To obtain  the decimal °C  : char t_dec * 0.0625<br>
+To limit the resources used on a 8bits microcontroller with reduced RAM and Flash, you can use the following trimming formula :<br>
+<code>
+unsigned char modulo =  t_dec >> 2; // t_dec / 4
+t_dec = t_dec * 6 + modulo;
+</code>
+<br>
 Edit the common.h files with the necessay SDC/SDA pins options, as well as device address and PIC operationnal clock frequency.
 <br>
 About the Microchip MPC9808 sensor :<br>
