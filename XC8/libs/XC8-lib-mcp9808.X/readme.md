@@ -27,6 +27,12 @@ Note that this module comme with 6 x 10K pull up resistors (the 103 components o
 ![dfrobot-mcp9808](https://github.com/user-attachments/assets/c417b6a4-3a56-4c23-950e-5372ed879ee4)
 
 <br>
+Note that this module comme with 6 x 10K pull up resistors (the 103 components on the module) for the address pins, the i2c pins (so no need to add external pullups in the circuit), and also the Alert pin.<br>
+<br>
+
+![dfrobot-schematic](https://github.com/user-attachments/assets/3aa534ea-7e33-4cb2-90b8-b3fa16a40174)
+
+<br>
 Pin 6-7-8 A are used to configure the device i2c address : default is 7 bits 0011000 - with the last three bits user defined.
 Pin3 Alert is an open collector pin with a default active low : when an alert threshold is set, the pin will be connected to ground.<br>
 You can for exemple connect a led with a pullup resistor that will turn on in that case.<br>
