@@ -1,5 +1,5 @@
 Basic library for Microchip MCP9808 temperature sensor.<br>
-Note that this sensor uses an i2c bus to communicate digital temperature data (in °C).<br>
+Note that this sensor uses an i2c bus to communicate digital temperature data (in °C) : you need to include the i2c library file in this project.<br>
 On a high level, a simple call to mcp9808_get_temp(struct temp_res *) will retrieve 16 bits sensor register ox06 in the following structure :<br>
 <code>
 struct temp_res {
