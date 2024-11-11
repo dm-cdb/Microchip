@@ -1,6 +1,6 @@
 Basic library for Microchip MCP9808 temperature sensor.<br>
 Note that this sensor uses an i2c bus to communicate digital temperature data (in °C) : you need to include the i2c bitbang library file in this project.<br>
-On a high level, a simple call to mcp9808_get_temp(struct temp_res *) will retrieve 16 bits sensor register ox06 in the following structure :<br>
+On a high level, a simple call to mcp9808_get_temp(struct temp_res *) will retrieve the 16 bits sensor register 0x06 in the following structure :<br>
 <code>
 struct temp_res {
     unsigned char sign;    // Temperature sign char : positive '+' (0x2b) or negative '-' (0x2d)
@@ -11,6 +11,7 @@ struct temp_res {
 </code>
 Edit the common.h files with the necessay SDC/SDA pins options, as well as device address and PIC operationnal clock frequency.
 <br>
+About the Microchip MPC9808 sensor :<br>
 The MCP9808 is an i2c temperature sensor that provide fine resolution and accuracy between -40°C and +125°C.<br>
 Its Operating Voltage Range is conveniently from 2.7V -> 5.5V.<br>
 Please note the temperature data are converted in °C.<br>
