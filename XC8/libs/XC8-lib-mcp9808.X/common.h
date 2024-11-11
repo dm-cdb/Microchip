@@ -1,6 +1,6 @@
 /* 
  * File:   common.h
- * Author: cdebalorre
+ * Author: Christian de Balorre
  *
  * Created on 4 novembre 2024, 15:38
  */
