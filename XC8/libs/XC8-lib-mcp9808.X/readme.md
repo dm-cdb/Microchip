@@ -36,4 +36,5 @@ A connection diagram example is shown below :<br>
 ![mcp9808-simulide](https://github.com/user-attachments/assets/24c0b5d8-a4a0-4332-ac63-6d5e32da6131)
 <br>
 A LED is connected to the Alert pin of the MCP9808 ; when a threshold is exceeded, the led will be connected to ground and turned on.<br>
+Note that A0 pin in this example is connected HIGH ; the device i2c address change from default 0011000 -> 0011001.
 Optionnally GPIO5 of PIC12F683 could be used in ADC mode to set some threshold on the MCP9808 device.
