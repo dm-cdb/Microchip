@@ -31,7 +31,7 @@ Please refer to the vendor specification for the exact board design. Below is th
 ![dfrobot](https://github.com/user-attachments/assets/d0e1b51d-b24c-4b7c-be8a-395f87e69260)
 
 <br>
-Note on Alert pin : by default this pin is HIGH when the ambiant temperature does not cross any threshold. If it does, the pin voltage becomes lLOW (0V, active LOW). That is, the transistor connect the circuit to ground.<br>
+Note on Alert pin : by default this pin is HIGH when the ambiant temperature does not cross any threshold (because of the pullup resistor). If it does, the pin voltage becomes lLOW (0V, active LOW). That is, the transistor connect the circuit to ground.<br>
 If one want to connect a LED to this pin with default active LOW, put a resistor and LED in serie, with the LED's cathode connected to pin 3 Alert of the sensor and resistor + anode to power line. The led will remain off when the ambiant temperature is within thersholds, and on when it is not, with the cathode connect to ground.<br>
 <br>
 Note on temparature data : the ambiant temperature is stored in two 8 bits registers, as 12bits ADC result + 1 sign bit. The 4 LSB are the decimal part of temperature, providing a 1 / 2^4 resolution (0,0625). The 8 MSB form the integral part of the temperature.<br>
