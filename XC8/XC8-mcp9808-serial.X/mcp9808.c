@@ -79,13 +79,13 @@ void mcp9808_get_temp(struct temp_res *col) {
     mcp9808_rd_int(ADDR, TEMP, &data);
             
     // Parse flag bits :    
-    if ((data.datah & 0x20) == 0x20){ //T° < TLOWER
+    if ((data.datah & 0x20) == 0x20){ // T° < TLOWER
         col->alert = 0x20;
     }
-    if ((data.datah & 0x40) == 0x40){ //T° > TUPPER
+    if ((data.datah & 0x40) == 0x40){ // T° > TUPPER
         col->alert = 0x40;
     }
-    if ((data.datah & 0x80) == 0x80){ //T° ³ TCRIT
+    if ((data.datah & 0x80) == 0x80){ // T° > TCRIT
         col->alert = 0x80;
     }
     // Check if TA < 0 and perform 2 complement in that case

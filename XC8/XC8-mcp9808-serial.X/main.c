@@ -115,7 +115,7 @@ void main(void) {
     mcp9808_wr_int(ADDR, ALERT_CRIT, &myData);
     __delay_us(4);
     
-    // Read upperT register : should display 1 a
+    // Debug : read upperT register : should display 1 a
     myData.datah = 0;
     myData.datal = 0;
     mcp9808_rd_int(ADDR, ALERT_UPPER, &myData);
