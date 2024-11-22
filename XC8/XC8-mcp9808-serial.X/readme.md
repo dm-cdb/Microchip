@@ -1,6 +1,6 @@
 The MCP9808 is a digital temperature sensor from Microchip, using i2c data bus.<br>
 It is reliable and accurate within -20°C up to +100°C, with 0.0625° precision using the maximum resolution (default).<br>
-It can operate from a power supply between 2.8V and 5.5V.
+It can be powered from 2.8V up to 5.5V.
 <br>
 ![mc9808-package](https://github.com/user-attachments/assets/b5b654fa-b373-4e9d-a359-6e45b16ecc39)
 
