@@ -21,6 +21,7 @@ It is NOT advisable to use the µcontroller internal weak pullups resistors to d
 - The RC time constant is R*C : it is the time to charge a capacitance up to 63% given a certain circuit resistance/impedance. Suppose 5V on a circuit => time for a capacitor to reach 5 * 0.63 = 3.15V<br>
 - If R = 20k, the max capacitance allowed on the i2c bus is : T = RC => 3x10^-7 / 20 000 = 15pF.<br>
 - The SCL/SDA capacitance pins of the MCP9808 is around 5pF ; the 12F683 pin capacitance is around 7pF. On the Arduino Nano the i2c ports capacitance is 10pF. If we add the cabling and breadboard capacitance, we are edging to the danger zone rapidly.<br>
+<br>
 
 ![mcp98078-dfrobot](https://github.com/user-attachments/assets/c98b53a5-2a34-46bc-bbde-aeed52c89299)
 
@@ -31,7 +32,7 @@ Please refer to the vendor specification for the exact board design. Below is th
 
 <br>
 Note on Alert pin : by default this pin is HIGH when the ambiant temperature does not cross any threshold. If it does, the pin voltage becomes lLOW (0V, active LOW). That is, the transistor connect the circuit to ground.<br>
-If one want to connect a LED to this pin with default active LOW, put a resistor and LED in serie, with the LED's cathode connected to pin 3 Alert of the sensor and resistor + anode to power line. The led will remain off when the ambiant temperature is within thersholds, and on when it is not, with the cathode connect to ground.
+If one want to connect a LED to this pin with default active LOW, put a resistor and LED in serie, with the LED's cathode connected to pin 3 Alert of the sensor and resistor + anode to power line. The led will remain off when the ambiant temperature is within thersholds, and on when it is not, with the cathode connect to ground.<br>
 <br>
 Note on temparature data : the ambiant temperature is stored in two 8 bits registers, as 12bits ADC result + 1 sign bit. The 4 LSB are the decimal part of temperature, providing a 1 / 2^4 resolution (0,0625). The 8 MSB form the integral part of the temperature.<br>
 13th bit is sign bit, with the measurement data formatted in two's complement.<br>
