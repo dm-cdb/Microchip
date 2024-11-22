@@ -31,9 +31,9 @@
 #endif
 
 #define FOSC _XTAL_FREQ         // Fosc in Hz - for information, not used in this project
-#define TOSC 1/FOSC             // Period = 0,250 µs @ 4MHz
+#define TOSC 1/FOSC             // Period = 0,250 Âµs @ 4MHz
 #define FCYC FOSC/4             // Instruction freq - one instruction consumes 4 clocks
-#define TCYC 1/FCYC             // Instruction period = 1µs @ 4MHz FOSC
+#define TCYC 1/FCYC             // Instruction period = 1Âµs @ 4MHz FOSC
 
 const unsigned char msg1[] = "Init...";
 unsigned char temperature[] = "Temp = +000.00 C";
@@ -97,34 +97,24 @@ void main(void) {
     send_Txt(rn, sizeof(rn));
     __delay_ms(1000);
     
-    // Config register : hyst = 1.5° 0b00000010 ; Alarm control on 0b00001000 = 0x0208
+    // Config register : hyst = 1.5Â° 0b00000010 ; Alarm control on 0b00001000 = 0x0208
     myData.datah = 0x02;
     myData.datal = 0x08;
     mcp9808_wr_int(ADDR, CONFIG, &myData);
      __delay_us(4);
     
-    // Set upper = 28° 0b00000001 0b11000000
+    // Set upper = 28Â° 0b00000001 0b11000000
     myData.datah = 0x01;
     myData.datal = 0xC0;
     mcp9808_wr_int(ADDR, ALERT_UPPER, &myData);
     __delay_us(4);
     
-    // Set critical = 35° 0b00000010 0b00110000
+    // Set critical = 35Â° 0b00000010 0b00110000
     myData.datah = 0x02;
     myData.datal = 0x30;
     mcp9808_wr_int(ADDR, ALERT_CRIT, &myData);
     __delay_us(4);
     
-    // Debug : read upperT register : should display 1 a
-    myData.datah = 0;
-    myData.datal = 0;
-    mcp9808_rd_int(ADDR, ALERT_UPPER, &myData);
-        
-    send_Txt(&myData.datah, sizeof(myData.datah));
-    send_Txt(rn, sizeof(rn));
-    send_Txt(&myData.datal, sizeof(myData.datal));
-    send_Txt(rn, sizeof(rn));
-        
     while (true){
         // Function populates sensor data at struct myTemp address
         mcp9808_get_temp(&myTemp);
