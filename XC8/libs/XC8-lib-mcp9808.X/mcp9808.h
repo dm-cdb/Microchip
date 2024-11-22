@@ -20,9 +20,9 @@
 #define ALERT_LOWER 0x03                         // Alert temperature lower
 #define ALERT_CRIT  0x04                       // Critical temperature trip
 #define TEMP        0x05                         // Temperature
-#define DEVICE      0x06                         // Manufacturer ID
-#define DEVICEREV   0x07                         // Revision ID
-#define RESOLUTION  0X08                         // Resolution
+#define DEVID	    0x06                         // Manufacturer ID
+#define DEVREV	    0x07                         // Revision ID
+#define RES	    0X08                         // Resolution
 
 struct temp_data {
     unsigned char datah;
