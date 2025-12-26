@@ -7,8 +7,8 @@ Also we set a limit within TMR2 with the help of the PR2 register.<br>
 
 Ie if PR2 is set to 125 (0x7d), then when TMR2 reaches this limit, it will reset to 0 and set the TMR2IF bit flag in the PIR1 register.<br>
 The flag will be set every 1µs * 16 (prescaler) * 125 (PR2) = 2ms<br>
-GPIO0 used here will be HIGH for 2ms, then toggle LOW for 2ms etc. ; this gives a frequency of 1/(0.002 *2) = 250Hz, whith a 50% duty cycle.<br>
-We also show how to use an interrupt routine to check the TMR2IF bit flag and toggle GPIO0.
+We also show how to use an interrupt routine to check the TMR2IF bit flag and toggle GPIO0 :<br>
+In this routine, GPIO0 will toggled HIGH and LOW on every interrupts. ; this gives a frequency of 1/(0.002 *2) = 250Hz, whith a 50% duty cycle.<br>
 
 An interrupt, when used, stop the main routine program which stores the next instruction address on a stack,  and jump to specially defined interrupt function.
 When this interrupt function returns, the programm jump back to the next instruction address saved on the stack and continue until the next interrupt.
