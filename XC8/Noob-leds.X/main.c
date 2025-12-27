@@ -49,7 +49,7 @@ void main(void) {
         GPIObits.GP0 = 0;
         __delay_ms(500);
 
-        // Using Direct Bit Names - not really recommended
+        // Using Direct Bit Names - not really recommended : make sure they do not conflict with TRISIO register
         GP2 = 0;
         GP1 = 1;
         GP0 = 0;
@@ -80,4 +80,5 @@ void main(void) {
     }
 
     return;
+
 } 
