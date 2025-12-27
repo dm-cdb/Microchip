@@ -61,7 +61,7 @@ So quite a few operations here. Below is the summary of the different registers 
 
 ![ADC-registers](https://github.com/user-attachments/assets/7720cfe3-42e3-4e28-8681-51529bcdda52)
 
-When using default result format "left justified", the ADRESH and ADREL registers are populated this way :
+When using default result format "left justified" (ADFM = 0), the ADRESH and ADREL registers are populated this way :
 
 ![adc_result_registers](https://github.com/user-attachments/assets/5e1f53c0-593c-470c-92d9-d3b99a968972)
 
