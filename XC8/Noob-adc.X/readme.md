@@ -23,7 +23,7 @@ There are quite a few registers involved :
 Note : 
 - Setting a pin to an analog input automatically disables the digital input circuitry, weak pull-ups and interrupt-on-change, if available.
 
-  Below are the different steps :
+Below are the different steps :
 
  1. Configure GPIO Port:
 
