@@ -29,8 +29,6 @@ Please note the temperature data are converted in °C.<br>
 
 <br>
 There is unfortunately no DIP version of this sensor ; but you can find breakout modules, ie DFRobot Fermion: MCP9808 High Accuracy I2C Temperature Sensor.<br>
-Note that this module comme with 6 x 10K pull up resistors (the 103 components on the module) for the address pins, the i2c pins (so no need to add external pullups in the circuit), and also the Alert pin.<br>
-<br>
 
 ![dfrobot-mcp9808](https://github.com/user-attachments/assets/c417b6a4-3a56-4c23-950e-5372ed879ee4)
 
