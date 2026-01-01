@@ -1,6 +1,8 @@
 /*
  * File:   main.c
- * Author: cdebalorre
+ * This program writes 10 byte in flash and display their ascii code on an 2x16LCD
+ * using a 74HC164 shift register
+ * Author: Christian de Balorre
  * EEprom operations
  * Created on 4 mars 2023, 12:08
  */
@@ -143,3 +145,4 @@ void main(void) {
     }
 
 }
+
