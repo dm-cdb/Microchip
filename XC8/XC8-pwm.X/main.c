@@ -51,9 +51,9 @@ void main (void){
     // PWM Period = [(PR2) + 1] * 4 * TOSC * (TMR2 Prescale Value)
     // Pulse Width = (CCPR1L:CCP1CON<5:4>) * TOSC * (TMR2 Prescale Value)
     // Duty Cycle Ratio = (CCPR1L:CCP1CON<5:4>) / 4(PR2 + 1)
-    CCPR1L = 0b00111110;        // 62 => 248 with DB bits to 0 => Period = 2ms ; Pulse = 1ms ; Duty cycle = 50%
+    CCPR1L = 0b00111110;        // Pulse : (62 -> 248 with DB bits to 0) = 248 * 0,00000025 * 16 = 0,001
     T2CONbits.T2CKPS = 0b11;    // Prescaler 1:16
-    PR2 = 124;                  // PR2 specifies the period : [(PR2) + 1] * 4 * TOSC * (TMR2 Prescale Value) = 500Hz
+    PR2 = 124;                  // Period : (124 + 1) * 4 * 0,00000025 * 16 = 0,002 = 500Hz
     T2CONbits.TMR2ON = 1;
     while (!PIR1bits.TMR2IF);
     // Set PWM on GP2 - CCP1
@@ -71,4 +71,5 @@ void main (void){
     }
     return;
 }
+
 
