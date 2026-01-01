@@ -26,7 +26,7 @@
 #define _XTAL_FREQ  4000000     // Needed for built-in  __delay_us(x) & __delay_ms(x)
 #define FOSC _XTAL_FREQ         // Fosc in Hz - for information, not used in this project
 #define FCYC FOSC/4             // Instruction freq - one instruction consumes 4 clocks
-#define TCYC 1/FCYC             // Instruction period (1µs for default 4MHz FOSC)
+#define TCYC 1/FCYC             // Instruction period (1Âµs for default 4MHz FOSC)
 
 //Declare global variables
 unsigned char B0, B1;
@@ -95,7 +95,7 @@ void main(void) {
     // Write flash : disable interrupt & enable eeprom write
     INTCONbits.GIE = 0;
     EECON1bits.WREN = 1;    
-    for (unsigned char i = 0, B0 = 33 ; B0<44 ; B0++){
+    for (unsigned char i = 0, B0 = 33 ; B0<43 ; B0++){ // Special ASCII characters ; see ASCII table
         writeEEprom(i, B0);     
         pos_Lcd(2,6);
         send_Nibbles(B0, DISP);
@@ -122,8 +122,8 @@ void main(void) {
     // Erase flash
     INTCONbits.GIE = 0;
     EECON1bits.WREN = 1;    
-    for (char i = 0 ; i < 15 ; i++){
-        writeEEprom(i, 0xFF);
+    for (char i = 0 ; i < 10 ; i++){
+        writeEEprom(i, 0xFF);    //Empty flash address = 0xFF
         pos_Lcd(2,6);
         send_Nibbles(i + 48, DISP);
         GPIObits.GP4 ^= 1;
@@ -141,4 +141,5 @@ void main(void) {
         send_Text(myText5,sizeof (myText5));
         __delay_ms(10000);
     }
+
 }
