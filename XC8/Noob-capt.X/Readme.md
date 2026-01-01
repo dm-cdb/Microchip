@@ -1,0 +1,46 @@
+This small project uses  the capture mode of CCP1 module (GP2 on 12F683).
+
+![pic12F683-ccp1](https://github.com/user-attachments/assets/96468384-d92a-49e0-89ac-6ad8f87a647d)
+
+Basically GP2 is set in input made, and count the delay bewteen raising edges or falling edges of a signal, unsing the TMR1 counter.<br>
+
+<img width="850" height="421" alt="Square-signal-properties" src="https://github.com/user-attachments/assets/a71f59f9-694e-4981-beaa-4c1daea4386a" />
+<br>
+<br>
+
+The TMR1 register (TMR1H:TMR1L) result is then copied to the CCPR1H:CCPR1L register, and from that we can :
+- compute the period of a signal.
+- compute the duty cyce of a signal (changing the raising edge mode to the falling edges mode right after the raising edge has been detected).
+- output a frequency divider.
+
+Below is the register used to program the capture mode of CCP1 :
+
+![ccp1con-register](https://github.com/user-attachments/assets/8d170a70-a2f4-4ab5-8164-b4b99b232487)
+
+We then set the last 4 bits :
+
+0100 = Capture mode, every falling edge
+0101 = Capture mode, every rising edge
+0110 = Capture mode, every 4th rising edge
+0111 = Capture mode, every 16th rising edge
+
+On our project we set Capture mode on every 4th rising edge. This means that if the input signal is 500Hz, the output signal on GP2 will be 500 / 4 (4th rising edge) / 2 (GP2 toggle at each interrupt ) => 62,5 Hz
+TMR1 prescaler is set to 1:2 : it means, with the MCU clock set at 4Mhz, that each TMR1 tick = 2 x 1µs.
+To sum up :
+- Fosc = 4 MHz
+- Instruction clock = Fosc / 4 = 1 MHz → 1 µs per tick
+- TMR1 prescaler = 1:2 =>  TMR1 tick = 2 µs
+
+=> since TMR1 is 16bits register (65535), the maximum measurable period before overflow is : 65536 × 2 µs ≈ 131 ms<br>
+=> minimum frequency without overflow : 1 / 131 = 7,6 Hz
+
+Then suppose, to simplify, no TMR1 prescaler and capture mode, every rising edge :<br>
+- Frequency = 500 Hz => Period = 1/500 = 2 ms = 2000 TMR1 ticks<br>
+=> we can then capture around 32 periods without TMR1 overflow.
+
+With a bit of math, you could calculate the period of a signal :
+- set two int varriables : _New and _Old, intialized at 0.
+- copy CCPR1H:CCPR1 into _New, then : _New - _Old = number of TMR1 ticks elapsed between twow captures.
+- If needed, copy _New, to _Old to compute the next period (_Old = _New)
+
+The with a bit of math, you can calculate the period (in second) and the frequency, not forgetting to take into account TMR1 prescaler and capture mode setting.
