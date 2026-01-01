@@ -48,7 +48,7 @@ To sum up The code initiate a 0,002sec PWM signal, with around 50% duty cycle wi
  - CCPR1L = 62 <br>
 
 The following steps should be followed :
-- Disable the PWM pin (CCP1) output drivers by setting the associated TRIS bit.
+- Set the GP2 PWM pin (CCP1) as input drivers by setting the associated TRIS bit.
 -  Set the PWM period by loading the PR2 register.
 -  Configure the CCP module for the PWM mode by loading the CCP1CON register with the appropriate values.
 -  Set the PWM duty cycle by loading the CCPR1L register and (optionaly) DC1B bits of the CCP1CON register.
@@ -56,7 +56,7 @@ The following steps should be followed :
     • Clear the TMR2IF interrupt flag bit of the PIR1 register.
     • Set the Timer2 prescale value by loading the  T2CKPS bits of the T2CON register.
     • Enable Timer2 by setting the TMR2ON bit of the T2CON register.
-- Enable PWM output after a new PWM cycle has started:
+- Set the GP2 PWM pin (CCP1) as output drivers by setting the associated TRIS bit
   • Wait until Timer2 overflows (TMR2IF bit of the PIR1 register is set).
   • Enable the CCP1 pin output driver by clearing the associated TRIS bit.
   
