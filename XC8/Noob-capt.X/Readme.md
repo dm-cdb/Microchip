@@ -2,7 +2,7 @@ This small project uses  the capture mode of CCP1 module (GP2 on 12F683).
 
 ![pic12F683-ccp1](https://github.com/user-attachments/assets/96468384-d92a-49e0-89ac-6ad8f87a647d)
 
-Basically GP2 is set in input made, and count the delay bewteen raising edges or falling edges of a signal, unsing the TMR1 counter.<br>
+Basically GP2 is set in input mode, and count the delay bewteen raising edges or falling edges of a signal, using the TMR1 counter.<br>
 
 <img width="850" height="421" alt="Square-signal-properties" src="https://github.com/user-attachments/assets/a71f59f9-694e-4981-beaa-4c1daea4386a" />
 <br>
@@ -11,7 +11,7 @@ Basically GP2 is set in input made, and count the delay bewteen raising edges or
 The TMR1 register (TMR1H:TMR1L) result is then copied to the CCPR1H:CCPR1L register, and from that we can :
 - compute the period of a signal.
 - compute the duty cyce of a signal (changing the raising edge mode to the falling edges mode right after the raising edge has been detected).
-- output a frequency divider.
+- output a frequency divider, based on CCP1M capture mode configration bits.
 
 Below is the register used to program the capture mode of CCP1 :
 
@@ -37,10 +37,10 @@ To sum up :
 Gneral formula for computing a period on CCP1 :<br>
 - Fosc = oscillator frequency (Hz)
 - P = Timer1 prescaler [1,2, 4, 8]
-- N = CCP capture divider [1, 4, 16] (raising edge only)
+- N = CCP1M capture divider [1, 4, 16] (raising edge only)
 - ΔC = difference between two captured values
 
-TMR1 increment once every : 4 * P / Fosc (because each tick = 4 Fosc cycle : with no prescaler P, TMR1 tick = 1µs @ 4MHz)<br>
+TMR1 increment once every : (4 * P) / Fosc (because each tick = 4 Fosc cycle : with no prescaler P, TMR1 tick = 1µs @ 4MHz)<br>
 -> Incoming signal period formula : (ΔC * 4P)/(N * Fosc)<br>
 
 Example :<br>
