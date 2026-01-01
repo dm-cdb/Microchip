@@ -10,7 +10,7 @@ Basically GP2 is set in input mode, and count the delay bewteen raising edges or
 
 The TMR1 register (TMR1H:TMR1L) result is then copied to the CCPR1H:CCPR1L register, and from that we can :
 - compute the period of a signal.
-- compute the duty cyce of a signal (changing the raising edge mode to the falling edges mode right after the raising edge has been detected).
+- compute the duty cycle of a signal (changing from raising edge mode to the falling edges mode right after the raising edge has been detected).
 - output a frequency divider, based on CCP1M capture mode configration bits.
 
 Below is the register used to program the capture mode of CCP1 :
