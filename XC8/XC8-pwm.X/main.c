@@ -38,7 +38,7 @@ void pic_Init(void);
 void pic_Init() {
     OSCCONbits.IRCF = 0b110;    // 4MHz
     CMCON0bits.CM = 0b111;      // Disable comparator
-    ANSEL  = 0b01011000;        // FOSC 1/16 (conversiont delay -> 100ns + 11 x 4µs), AN3 (GP4)
+    ANSEL  = 0b01011000;        // FOSC 1/16 (conversiont delay -> 100ns + 11 x 4Âµs), AN3 (GP4)
     TRISIO = 0b00111111;
     ADCON0 = 0b00001100;        // ADFM left, Vref = VDD, AN3 (GP4)
     CCP1CON = 0b00001100;       // PWM mode, DB bits to 0, active-high
@@ -51,7 +51,7 @@ void main (void){
     // PWM Period = [(PR2) + 1] * 4 * TOSC * (TMR2 Prescale Value)
     // Pulse Width = (CCPR1L:CCP1CON<5:4>) * TOSC * (TMR2 Prescale Value)
     // Duty Cycle Ratio = (CCPR1L:CCP1CON<5:4>) / 4(PR2 + 1)
-    CCPR1L = 0b00111110;        // 250 | 62 => Period = 2ms ; Pulse = 1ms ; Duty cycle = 50%
+    CCPR1L = 0b00111110;        // 62 => 248 with DB bits to 0 => Period = 2ms ; Pulse = 1ms ; Duty cycle = 50%
     T2CONbits.T2CKPS = 0b11;    // Prescaler 1:16
     PR2 = 124;                  // PR2 specifies the period : [(PR2) + 1] * 4 * TOSC * (TMR2 Prescale Value) = 500Hz
     T2CONbits.TMR2ON = 1;
@@ -71,3 +71,4 @@ void main (void){
     }
     return;
 }
+
