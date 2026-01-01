@@ -34,13 +34,20 @@ To sum up :
 => since TMR1 is 16bits register (65535), the maximum measurable period before overflow is : 65536 × 2 µs ≈ 131 ms<br>
 => minimum frequency without overflow : 1 / 131 = 7,6 Hz
 
-Then suppose, to simplify, no TMR1 prescaler and capture mode, every rising edge :<br>
-- Frequency = 500 Hz => Period = 1/500 = 2 ms = 2000 TMR1 ticks<br>
-=> we can then capture around 32 periods without TMR1 overflow.
+Gneral formula for computing a period on CCP1 :<br>
+- Fosc = oscillator frequency (Hz)
+- P = Timer1 prescaler [1,2, 4, 8]
+- N = CCP capture divider [1, 4, 16] (raising edge only)
+- ΔC = difference between two captured values
 
-With a bit of math, you could calculate the period of a signal :
-- set two int varriables : _New and _Old, intialized at 0.
-- copy CCPR1H:CCPR1 into _New, then : _New - _Old = number of TMR1 ticks elapsed between twow captures.
-- If needed, copy _New, to _Old to compute the next period (_Old = _New)
+TMR1 increment once every : 4 * P / Fosc (because each tick = 4 Fosc cycle : with no prescaler P, TMR1 tick = 1µs @ 4MHz)<br>
+-> Incoming signal period formula : (ΔC * 4P)/(N * Fosc)<br>
 
-The with a bit of math, you can calculate the period (in second) and the frequency, not forgetting to take into account TMR1 prescaler and capture mode setting.
+Example :<br>
+- Fosc = 4 MHz
+- P = 2 (TMR1 prescaler 1:2)
+- CCP1M = capture every rising edge → N = 1
+
+if ΔC = 1000 :<br>
+Signal period = (1000 * 4 * 2)/(1 x 4000000) = 0,002 sec<br>
+Frequency = 1 / 0,002 = 500Hz
