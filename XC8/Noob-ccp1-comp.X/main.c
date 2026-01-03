@@ -32,7 +32,7 @@
 #define FCYC FOSC/4             // Instruction freq - one instruction consumes 4 clocks
 #define TCYC 1/FCYC             // Instruction period (1µs for default 4MHz FOSC)
 
-#define BAUDR 9600              // Baud rate = 9600 bps -> 104 µ/bit
+#define BAUDR 9600              // Baud rate = 9600 bps -> 104 µs/bit
 #define BITDEL  103             // Bit delay 104 - isr TCYC
 #define DATABITS 8
 #define TX GPIObits.GP1         // UART TX pin
@@ -83,7 +83,7 @@ void init_Pic() {
     CCPR1H = 0b01011010; // CCPR1 = 0x5AEE = 23278 ticks = 0,025ms w/o prescaler
     CCPR1L = 0b11101110; // TMR1 registers will be compared with these registers
     T1CONbits.TMR1CS = 0; // TMR1 with internal Clock source FOSC/4 = 1µs
-    T1CONbits.T1CKPS = 0b10; // Prescale 1:4 => 1 TMR1 tick = 4 µs
+    T1CONbits.T1CKPS = 0b10; // Prescale 1:4 => 1 TMR1 tick = 4µs
     T1CONbits.TMR1ON = 0;
     TMR1L = 0x00;
     TMR1H = 0x00;
@@ -111,4 +111,5 @@ void main(void) {
         TMR1H = 0x00;
     }
 }   
+
 
