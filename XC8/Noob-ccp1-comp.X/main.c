@@ -28,11 +28,11 @@
 
 #define _XTAL_FREQ  4000000     // Needed for built-in  __delay_us(x) & __delay_ms(x)
 #define FOSC _XTAL_FREQ         // Fosc in Hz - for information, not used in this project
-#define TOSC 1/FOSC             // Period = 0,250 µs
+#define TOSC 1/FOSC             // Period = 0,250 Âµs
 #define FCYC FOSC/4             // Instruction freq - one instruction consumes 4 clocks
-#define TCYC 1/FCYC             // Instruction period (1µs for default 4MHz FOSC)
+#define TCYC 1/FCYC             // Instruction period (1Âµs for default 4MHz FOSC)
 
-#define BAUDR 9600              // Baud rate = 9600 bps -> 104 µ/bit
+#define BAUDR 9600              // Baud rate = 9600 bps -> 104 Âµ/bit
 #define BITDEL  103             // Bit delay 104 - isr TCYC
 #define DATABITS 8
 #define TX GPIObits.GP1         // UART TX pin
@@ -40,8 +40,6 @@
 
 //Global variables
 unsigned const char myText1[] = "OC pin toggling...";
-unsigned const char myText2[] = "OC pin SET...";
-unsigned const char myText3[] = "OC pin CLEAR, GP0 SET...";
 unsigned const char rn[] = "\r\n"; // Char line feed
 static volatile unsigned char txBuffer __at(0x70); //Force var in shared ram for debug
 static volatile __bit TXFLAG;
@@ -84,8 +82,8 @@ void init_Pic() {
     GPIO = 0x00; // OUTPUT LOW
     CCPR1H = 0b01011010; // CCPR1 = 0x5AEE = 23278 ticks = 0,025ms w/o prescaler
     CCPR1L = 0b11101110; // TMR1 registers will be compared with these registers
-    T1CONbits.TMR1CS = 0; // TMR1 with internal Clock source FOSC/4 = 1µs
-    T1CONbits.T1CKPS = 0b10; // Prescale 1:4 => 1 TMR1 tick = 4 µs
+    T1CONbits.TMR1CS = 0; // TMR1 with internal Clock source FOSC/4 = 1Âµs
+    T1CONbits.T1CKPS = 0b10; // Prescale 1:4 => 1 TMR1 tick = 4 Âµs
     T1CONbits.TMR1ON = 0;
     TMR1L = 0x00;
     TMR1H = 0x00;
@@ -113,3 +111,4 @@ void main(void) {
         TMR1H = 0x00;
     }
 }   
+
