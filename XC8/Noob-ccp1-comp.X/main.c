@@ -97,7 +97,7 @@ void main(void) {
    send_Txt(rn, sizeof (rn));
    PIR1bits.CCP1IF = 0;
    T1CONbits.TMR1ON = 1;
-   CCP1CONbits.CCP1M = 0b1001; // OC pin cleared (GP2)
+   CCP1CONbits.CCP1M = 0b1001; // Initiate CCP1 module ; OC pin cleared (GP2) at next match
    while (true) {
         while (!PIR1bits.CCP1IF);
         PIR1bits.CCP1IF = 0;
@@ -106,11 +106,12 @@ void main(void) {
         TMR1H = 0x00;
         while (!PIR1bits.CCP1IF);
         PIR1bits.CCP1IF = 0;
-        CCP1CONbits.CCP1M = 0b1001; // OC pin cleard (GP2) at next match
+        CCP1CONbits.CCP1M = 0b1001; // OC pin cleared (GP2) at next match
         TMR1L = 0x00;
         TMR1H = 0x00;
     }
 }   
+
 
 
 
