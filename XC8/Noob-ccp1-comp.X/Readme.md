@@ -26,3 +26,6 @@ The tricky bit to understand when you configure the CCP1CON / CCP Mode Select bi
 When set to : <br>
 - 1000 = Compare mode, set output on match (CCP1IF bit is set) : the pin will be set (on) WHEN a match occurs (CCP1IF flag set).
 - 1001 = Compare mode, clear output on match (CCP1IF bit is set) : the pin will be cleared (off) WHEN a match occurs (CCP1IF flag is set).
+
+Note :<br>
+If you just want to generate a soft interrupt (CCP1IF bit is set) on a match, set compare mode to 1010. In this mode CCP module does not assert GP2, so this pin is free for other uses : GPIO, A/D channel etc.
