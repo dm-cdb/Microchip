@@ -21,5 +21,8 @@ Steps :
 - Configure CCPR1H and CCP1L registers : we'll set them to 0b01011010 and 0b11101110, which together on 16 bits are 0x5AEE = 23278 ticks = 0,025ms w/o prescaler
 - Configure TMR1 prescaler to 1:4, so one TMR1 tick = 4 µs ; this means TMR1 will tick during 0,025 * 4 = 0,1ms when matching CCPR1 registers.
   - Led will be on during 0,1ms and off during 0,1ms => period 0,2ms = 5Hz (more or less)
-- Configure first CCP1M bits with 1001 in the CCP1CON register to initiate the compare mode with CCP1 pin output to 0.
-- In the loop, we alternate between CCP1 pin set and clear to toggle the led.
+
+The tricky bit to understand when you configure the CCP1CON / CCP Mode Select bits : <br>
+When set to : <br>
+- 1000 = Compare mode, set output on match (CCP1IF bit is set) : the pin will be set (on) WHEN a match occurs (CCP1IF flag set).
+- 1001 = Compare mode, clear output on match (CCP1IF bit is set) : the pin will be cleared (off) WHEN a match occurs (CCP1IF flag is set).
