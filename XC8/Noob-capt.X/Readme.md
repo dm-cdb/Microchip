@@ -25,7 +25,12 @@ We then set the last 4 bits :
 - 0111 = Capture mode, every 16th rising edge
 
 For our project we set Capture mode on every 4th rising edge. This means that if the input signal is 500Hz, the output signal on GP2 will be 500 / 4 (4th rising edge) / 2 (GP2 toggle at each interrupt ) => 62,5 Hz<br>
-TMR1 prescaler is set to 1:2 : it means, with the MCU clock set at 4Mhz, that each TMR1 tick = 2 x 1µs.
+TMR1 prescaler is set to 1:2 : it means, with the MCU clock set at 4Mhz, that each TMR1 tick = 2 x 1µs (not used in this project just computed).
+
+Below is a simulation from SimulIDE :
+
+![pic-capt](https://github.com/user-attachments/assets/128b00d6-f12a-4cfd-861f-cf59a12d12a0)
+
 
 To sum up :
 - Fosc = 4 MHz
@@ -53,7 +58,4 @@ if ΔC = 1000 :<br>
 Signal period = (1000 * 4 * 2)/(1 x 4000000) = 0,002 sec<br>
 Frequency = 1 / 0,002 = 500Hz
 
-Below is a simulation from SimulIDE :
-
-![pic-capt](https://github.com/user-attachments/assets/128b00d6-f12a-4cfd-861f-cf59a12d12a0)
 
