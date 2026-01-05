@@ -100,16 +100,17 @@ void main(void) {
    CCP1CONbits.CCP1M = 0b1001; // OC pin cleared (GP2)
    while (true) {
         while (!PIR1bits.CCP1IF);
-        CCP1CONbits.CCP1M = 0b1000; // OC pin set (GP2)
         PIR1bits.CCP1IF = 0;
+        CCP1CONbits.CCP1M = 0b1000; // OC pin set (GP2) at next match       
         TMR1L = 0x00;
         TMR1H = 0x00;
         while (!PIR1bits.CCP1IF);
-        CCP1CONbits.CCP1M = 0b1001; // OC pin cleard (GP2)
         PIR1bits.CCP1IF = 0;
+        CCP1CONbits.CCP1M = 0b1001; // OC pin cleard (GP2) at next match
         TMR1L = 0x00;
         TMR1H = 0x00;
     }
 }   
+
 
 
