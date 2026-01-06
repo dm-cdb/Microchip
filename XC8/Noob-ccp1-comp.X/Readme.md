@@ -28,4 +28,4 @@ When set to : <br>
 - 1001 = Compare mode, clear output on match (CCP1IF bit is set) : the pin will be cleared (off) WHEN a match occurs (CCP1IF flag is set).
 
 Note :<br>
-If you just want to generate a soft interrupt (CCP1IF bit is set) on a match, set compare mode to 1010. In this mode CCP module does not assert GP2, so this pin is free for other uses : GPIO, A/D channel etc.
+If you just want to generate a soft interrupt (CCP1IF bit is set) on a match when TMR1 = CCPR1, set compare mode to 1010. In this mode CCP module does not assert GP2, so this pin is free for other uses : GPIO, A/D channel etc.
