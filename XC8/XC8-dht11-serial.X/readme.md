@@ -6,7 +6,7 @@ Below is a basic schematic from Simulide :
 Please note that this code will not work with an MCU clocking < 8MHz ; otherwise it could miss some timings when the DHT begins to transmit its 40 bits.<br>
 The 50µs between reading HIGH levels determining a 0 or a 1 may prove to short a delay between function calls and various data manipulations at 4Mhz for example.
 
-Below is a comparison between an arduino code and Microchip PIC 12F683 (com6) with two different DHT measured at the same time ; they are pretty close to each other :
+Below is a comparison between an arduino code and Microchip PIC 12F683 (com6) with two different DHT11 measured at the same time ; they are pretty close to each other :
 
 ![dht-11-pic-arduino](https://github.com/user-attachments/assets/831b5e98-971f-4fef-852e-7f25930d220f)
 
