@@ -11,4 +11,3 @@ next negative integer.<br>
 See picture below :
 
 ![pic-dht22-negative](https://github.com/user-attachments/assets/c1212dbb-b3e4-4f8d-8274-b12dec3bd678)
-
