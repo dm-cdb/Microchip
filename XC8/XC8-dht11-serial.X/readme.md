@@ -10,7 +10,7 @@ Below is a comparison between an arduino code and Microchip PIC 12F683 (com6) wi
 
 ![dht-11-pic-arduino](https://github.com/user-attachments/assets/831b5e98-971f-4fef-852e-7f25930d220f)
 
-This code does test the negative bit, with the same hardware bug already observed with an Arduino ATMega 328P : it does not know how to decrement for example from -10,9 to 11, and will display -10 instead...<br>
+This code does test the negative bit, with the same hardware bug already observed with an Arduino ATMega 328P : it does not know how to decrement for example from -n,9 to next negative integer, and will go from -10,9 to -10,0 instead of -11,0 ...<br>
 See picture below :
 
 
