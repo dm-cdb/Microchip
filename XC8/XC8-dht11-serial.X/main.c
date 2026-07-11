@@ -97,7 +97,7 @@ void tx_UART() {
 void send_Txt(const unsigned char * s, unsigned char k) {
     for (unsigned char i = 0; i < k; i++) {
         txBuffer = s[i];
-        tx_UART();
+        if(txBuffer) tx_UART();      // Do not print end-of-string 0
     }
     txBuffer = 0x00;
 
