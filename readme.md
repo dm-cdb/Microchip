@@ -9,7 +9,8 @@ It also has 2048 words (14 bits) of program memory space (flash), 128 bytes of g
 
 ## PIC 12F675:
 
-<img width="837" height="284" alt="PIC12F675" src="https://github.com/user-attachments/assets/d11091af-8515-4f7d-b769-7d2f1939a4a5" />
+<img width="909" height="212" alt="pic12F675-pins" src="https://github.com/user-attachments/assets/76583f27-5575-4a60-8b6d-f3402566c502" />
+
 
 This PIC has an internal 4MHz oscillor and support an external oscillator up to 20MHz. 
 It also has 1024 words (14 bits) of program memory space (flash), 64 bytes of general purpose registers (aka data memory space - static RAM) and 128 bytes of eeprom.
@@ -42,6 +43,10 @@ You should then read the correct OSCCAL value at address 0x03FF.
 
 
 <img width="634" height="435" alt="calib-1" src="https://github.com/user-attachments/assets/954a406e-a1c3-43cd-af4e-41a67b0a5e25" />
+
+
+<img width="635" height="436" alt="calib-2" src="https://github.com/user-attachments/assets/74be80d7-05cf-4b93-86be-317df740bdba" />
+
 
 
 
