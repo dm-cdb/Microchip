@@ -23,11 +23,11 @@ VCC is provided by the 5V pin from the USB to serial converter.
 
 ## Transformation functions
 
-This assembly code tries to optimize the 8bits architecture of this PIC : no software multiplication or division, just shifting around bits...<br>
+This assembly code tries to optimize the 8 bits architecture of this PIC: no software multiplication nor division, just shifting around bits...<br>
 
 ### Temperature
 The supported temperature for exemple range between +125°C and -40°C (165°C amplitude). The transformation function from the datasheet is therefore :<br>
-((measured T°C)/2<sup>16</sup>) * 165 - 40
+((raw value)/2<sup>16</sup>) * 165 - 40
 
 This means (considering that the 2 LSB of the 16bits data are always 0):
 1 lsb = (4/2<sup>16</sup>) * 165 = 0.01007 <br>
@@ -40,12 +40,12 @@ To achieve a better precision, we can therefore perform the following operations
 1. Divide by 128 (2<sup>7</sup>) and add to result
 1/128 = 0,0078125<br>
 This equals to shift right the result by 7.<br>
-Almost there, but not quite ; we are 0.0081 higher from the exact value.<br>
+Almost there, but not quite; we are 0.0081 higher from the exact value.<br>
 
 2. Divide by 1024 (2<sup>10</sup>) and substract from the result
 1/1024 = 0,00097<br>
 This equals to shift right result by 10.<br>
-The correction is now 0.0068. Getting closer.<br>
+The correction is now 0.0068 - getting closer!<br>
 
 3. Last correction : Divide by 4096  (2<sup>12</sup> and add to result
 1/4096 = 0,00024<br>
@@ -54,7 +54,7 @@ This equals to shift right result by 12.<br>
 This is enough precision for a final result with two decimal places.<br>
 
 4. We then substract 4000 to the final result.
-If the CARRY bit is not set, we then perform a 2's complement to get an absolute value, and set the sign to minus (-).<br>
+If the CARRY bit is not set, we perform a 2's complement to get an absolute value, and set the sign to minus (-).<br>
 
 ### Humidity
 We perform the same logic with humidity measurement, except we'll shift right by 13 the raw value from the sensor.<br>
