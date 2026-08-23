@@ -9,8 +9,8 @@ Got to "Project properties", then "pic-as global options":
 
 <img width="1009" height="632" alt="pic-as" src="https://github.com/user-attachments/assets/d8843409-1df4-4ee4-a271-92cabc1d8725" />
 
-- Reset should always begin at flash address 0x0000
-- Interrupts at flash address 0x0004
+- Reset should always begin at flash address 0x0000.
+- Interrupt handling at flash address 0x0004.
 
 
 
