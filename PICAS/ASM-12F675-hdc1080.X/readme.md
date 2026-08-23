@@ -30,19 +30,19 @@ The supported temperature for exemple range between +125°C and -40°C (165°C a
 ((measured T°C)/2<sup>16</sup>) * 165 - 40
 
 This means (considering that the 2 LSB of the 16bits data are always 0):
-1 lsb = (4/2<sup>16</sup>) * 165 = 0,01007 <br>
+1 lsb = (4/2<sup>16</sup>) * 165 = 0.01007 <br>
 
 I modified the transformation function first by shifting right the measured result by 2; the transformation function then becomes:<br>
-1 lsb = (1/2<sup>14</sup>) * 165 = 0,01007 <br>
+1 lsb = (1/2<sup>14</sup>) * 165 = 0.01007 <br>
 We could then decide that one lsb = 1 hundredth of °C. But the drift of 0.007 over the range of 16384 = 114, that is 1.14 degree.<br>
 To achieve a better precision, we can therefore perform the following operations:
 
 1. Divide by 127 (2<sup>7</sup> and add to result
 1/128 = 0,0078125<br>
-This equals to shift right result by 7.<br>
-Almost there, but not quite ; we are 0.0081 higher from exact value.<br>
+This equals to shift right the result by 7.<br>
+Almost there, but not quite ; we are 0.0081 higher from the exact value.<br>
 
-2. Divide by 1024 (2<sup>10</sup> and substract to result
+2. Divide by 1024 (2<sup>10</sup> and substract from the result
 1/1024 = 0,00097<br>
 This equals to shift right result by 10.<br>
 The correction is now 0.0068. Getting closer.<br>
