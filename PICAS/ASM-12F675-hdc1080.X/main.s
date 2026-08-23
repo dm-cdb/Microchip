@@ -27,7 +27,7 @@ GLOBAL resetVec
 #define I2C_MSK 11111001B // This mask makes sure GPIO states do not mess with I2C TRISIO I/O
     
 // HDC1080 register
-#define TEMP    0x00                         // 2 bytes T°C
+#define TEMP    0x00                         // 2 bytes TÂ°C
 #define HUMY    0x01                         // 2 bytes %
 #define CONFIG  0x02                         // 2 bytes config and status
 #define SERID1  0xfb                         // 2 bytes upper serial ID
@@ -151,23 +151,6 @@ setup:
     
 main:
     bcf GP4    
-    
-    ; print 12F675 Osc calibration value - debug
-    ;--------------------------------
-    ;movlw OSCAV
-    ;call readProm
-    ;movlw '0'
-    ;movwf txData
-    ;call uart_send
-    ;movlw 'x'
-    ;movwf txData
-    ;call uart_send
-    ;bsf RP0
-    ;movf OSCCAL, w
-    ;bcf RP0
-    ;call hexConv 
-    ;call crlf
-    ;------------------------------   
     
     ; get Manuf. ID register
     call i2c_start
@@ -315,13 +298,8 @@ measure:
     call hexConv
     call crlf
     
-    ; apply transfert function for T°C with shift >> 2 (right adjust result to 14bits)
+    ; apply transfert function for TÂ°C with shift >> 2 (right adjust result to 14bits)
     ; 1 lsb * 165 = 0.01007
-    ; debug : 0x6c24 = 29.70
-    ; movlw 0x6b
-    ; movwf st1
-    ; movlw 0xdc
-    ; movwf st2
     bcf CARRY
     rrf st1
     rrf st2
@@ -404,11 +382,6 @@ measure:
     
     ; apply transfert function for %RH with shift >> 3 (right adjust result to 13bits)
     ; 1 lsb * 100 = 0.012207 : correction = 1/4 - 1/32 = 0,21875 -> almost 0,22070
-    ; debug : 0x8954 = 53.64
-    ; movlw 0xbc
-    ; movwf st3
-    ; movlw 0x91
-    ; movwf st4
     bcf CARRY
     rrf st3
     rrf st4
