@@ -1,6 +1,6 @@
 This is an assembly program to drive an HDC1080 temperature and humidity sensor from Texas Instrument with a simple Microchip PIC 12F675.<br>
 This sensor is one of the best value for money on the market, with an excellent precision (14 bits ADC).<br>
-No fancy pins : VCC, Ground + SCLA and SDA I2C pins for data communication.<br>
+No fancy pins: VCC, Ground + SCLA and SDA I2C pins for data communication.<br>
 The code is around 600 word long ; include a minimal serial driver, I2C driver and HDC1080 driver.
 
 ## Schematic:
@@ -26,30 +26,30 @@ VCC is provided by the 5V pin from the USB to serial converter.
 This assembly code tries to optimize the 8bits architecture of this PIC : no software multiplication or division, just shifting around bits...<br>
 
 ### Temperature
-The supported temperature for exemple range between +125°C and -400C (165°C amplitude). The transformation from the datasheet is therefore :<br>
+The supported temperature for exemple range between +125°C and -40°C (165°C amplitude). The transformation function from the datasheet is therefore :<br>
 ((measured T°C)/2<sup>16</sup>) * 165 - 40
 
 This means (considering that the 2 LSB of the 16bits data are always 0):
 1 lsb = (4/2<sup>16</sup>) * 165 = 0,01007 <br>
 
-I modified the transformation function first by shifting the measured result right by 2, then dividing the result by 2<sup>14</sup>.
+I modified the transformation function first by shifting right the measured result by 2, then dividing the result by 2<sup>14</sup>.
 1 lsb = (1/2<sup>14</sup>) * 165 = 0,01007 <br>
 We could then decide that one lsb = 1 hundredth of °C. But the drift of 0.007 over the range of 16384 = 114, that is 1.14 degree.<br>
-To achieve a better precision, we will perform the following operations:
+To achieve a better precision, we can therefore perform the following operations:
 
 1. Divide by 127 (2<sup>7</sup> and add to result
 1/128 = 0,0078125<br>
-This equal to shift right result by 7.<br>
-Alomost there, but not quite ; we are 0.0081 higher from exact value.<br>
+This equals to shift right result by 7.<br>
+Almost there, but not quite ; we are 0.0081 higher from exact value.<br>
 
 2. Divide by 1024 (2<sup>10</sup> and substract to result
 1/1024 = 0,00097<br>
-This equal to shift right result by 10.<br>
-The correction is now equal to 0.0068. Getting closer.<br>
+This equals to shift right result by 10.<br>
+The correction is now 0.0068. Getting closer.<br>
 
 3. Last correction : Divide by 4096  (2<sup>12</sup> and add to result
 1/4096 = 0,00024<br>
-This equal to shift right result by 12.<br>
+This equals to shift right result by 12.<br>
 0.0068 + 0.00024 = 0.00704<br>
 This is enough precision for a final result with two decimal places.<br>
 
