@@ -37,7 +37,7 @@ I modified the transformation function first by shifting right the measured resu
 We could then decide that one lsb = 1 hundredth of °C. But the drift of 0.007 over the range of 16384 = 114, that is 1.14 degree.<br>
 To achieve a better precision, we can therefore perform the following operations:
 
-1. Divide by 127 (2<sup>7</sup> and add to result
+1. Divide by 128 (2<sup>7</sup> and add to result
 1/128 = 0,0078125<br>
 This equals to shift right the result by 7.<br>
 Almost there, but not quite ; we are 0.0081 higher from the exact value.<br>
