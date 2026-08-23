@@ -27,7 +27,7 @@ For example 0x344C will return 0x4C as the calibration value. Therefore the firs
 
 See page 18 and 56 of PIC 12F675 datasheet.<br>
 
-If you don't reprogram correctly the address 0x03FF with 0x34xx, your code will jump to address 0x03FF and perform a addlw 255 (0x3FFF), then copy this value in the OSCCAL register...<br>
+If you don't reprogram correctly the address 0x03FF with 0x34xx, your code will jump to address 0x03FF and perform a addlw 255 (0x3FFF), with no return...PC counter will then wrapup to address 0x00000<br>
 I will propose later a simple method to recover the OSCCAL value in case it has been erased and not recovered.
 
 
