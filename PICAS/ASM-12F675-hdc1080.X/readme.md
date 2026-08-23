@@ -13,9 +13,9 @@ From SimulIDE @ 5V VCC:
 
 <img width="683" height="398" alt="HDC-1080-diag" src="https://github.com/user-attachments/assets/49b2aa27-caab-47d9-95b9-8500156a39b5" />
 
-You'll find this sensor with convenient breakout boards. I got one from Fasizi, but beware : the integrated 10K pull ups are not activated and you must solder the I2C path on it to activate them.<br>
-For the sake of simplicity, I instead put two external 3.3K ohms resistors between I2C bus and 5V VCC.<br>
-VCC is provided by the 5V from the USB to serial converter.
+You'll find this sensor with convenient breakout boards. I got one from Fasizi, but beware: the integrated 10K pull ups are not activated and you must solder the I2C pads together to activate them.<br>
+For the sake of simplicity, I instead put two external 3.3K ohms resistors between the I2C bus and 5V VCC.<br>
+VCC is provided by the 5V pin from the USB to serial converter.
 
 ## Breadboard:
 
