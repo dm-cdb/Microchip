@@ -26,16 +26,16 @@ VCC is provided by the 5V pin from the USB to serial converter.
 This assembly code tries to optimize the 8 bits architecture of this PIC: no software multiplication nor division, just shifting around bits...<br>
 
 ### Temperature
-The supported temperature for exemple range between +125°C and -40°C (165°C amplitude). The transformation function from the datasheet is therefore :<br>
+The supported temperature ranges between +125°C and -40°C (165°C amplitude). The transformation function from the datasheet is therefore :<br>
 ((raw value)/2<sup>16</sup>) * 165 - 40
 
 This means (considering that the 2 LSB of the 16bits data are always 0):
 1 lsb = (4/2<sup>16</sup>) * 165 = 0.01007 <br>
 
-I modified the transformation function first by shifting right the measured result by 2; the transformation function then becomes:<br>
+I modified the transformation function first by shifting right the raw data by 2; the transformation function then becomes:<br>
 1 lsb = (1/2<sup>14</sup>) * 165 = 0.01007 <br>
 We could then decide that one lsb = 1 hundredth of °C. But the drift of 0.007 over the range of 16384 = 114, that is 1.14 degree.<br>
-To achieve a better precision, we can therefore perform the following operations:
+To achieve better precision, we can therefore perform the following operations:
 
 1. Divide by 128 (2<sup>7</sup>) and add to result
 1/128 = 0,0078125<br>
@@ -57,7 +57,7 @@ This is enough precision for a final result with two decimal places.<br>
 If the CARRY bit is not set, we perform a 2's complement to get an absolute value, and set the sign to minus (-).<br>
 
 ### Humidity
-We perform the same logic with humidity measurement, except we'll shift right by 13 the raw value from the sensor.<br>
+We perform the same logic with humidity measurement, except we'll shift right by 3 the raw value from the sensor.<br>
 1 lsb = (1/2<sup>13</sup>) * 100 = 0.0122<br>
 We decide that one lsb = 1 hundredth of %RH.
 We then only have to make it for the extra 0.22/<br>
@@ -72,7 +72,7 @@ However this is still 0.03 higher than expected.<br>
 This is more than enough precision for a RH with two decimal places.
 
 ## Notes
-The default code displays on the serial terminal the raw T°C and RH values in hexadecimal from the sensor, so you can always compare the PIC transformed function with the real one from Texas Instrument datasheet.<br>
+The code displays on the serial terminal the raw T°C and RH values in hexadecimal from the sensor, so you can always compare the PIC transformed function with the real one from Texas Instrument datasheet.<br>
 Code tested in real conditions from +30°C -> -10°C.<br>
 
 Hope this will help ! ;-)
