@@ -53,26 +53,26 @@ This equal to shift right result by 12.<br>
 0.0068 + 0.00024 = 0.00704<br>
 This is enough precision for a final result with two decimal places.<br>
 
-4. We then substract 4000 to the final result
+4. We then substract 4000 to the final result.
 If the CARRY bit is not set, we then perform a 2's complement to get an absolute value, and set the sign to minus (-).<br>
 
 ### Humidity
-We perform the same logic with humidity measurement, except we'll shift right by 13 the gross value from the sensor.<br>
+We perform the same logic with humidity measurement, except we'll shift right by 13 the raw value from the sensor.<br>
 1 lsb = (1/2<sup>13</sup>) * 100 = 0.0122<br>
 We decide that one lsb = 1 hundredth of %RH.
 We then only have to make it for the extra 0.22/<br>
 
 1. Divide result by 4 and add to result (1 + 0.25)<br>
 1/4 = 0.25<br>
-This equal to shift right result by 2.<br>
-This is 0.03 higher than expected.<br>
+This equal to shift right the result by 2.<br>
+However this is still 0.03 higher than expected.<br>
 
 2. Divide result by 32 and substract to result
 1/32 = 0,031<br>
-This is more than enough for a RH with two decimal places.
+This is more than enough precision for a RH with two decimal places.
 
 ## Notes
-The default code displays on the serial terminal the raw value in hexadecimal from the sensor, so you can always compare the PIC transformed function with the real one from Texas Instrument datasheet.<br>
+The default code displays on the serial terminal the raw T°C and RH values in hexadecimal from the sensor, so you can always compare the PIC transformed function with the real one from Texas Instrument datasheet.<br>
 Code tested in real conditions from +30°C -> -10°C.<br>
 
 Hope this will help ! ;-)
