@@ -46,6 +46,9 @@ You should then read the correct OSCCAL value at address 0x03FF.
 
 <img width="635" height="436" alt="calib-2" src="https://github.com/user-attachments/assets/74be80d7-05cf-4b93-86be-317df740bdba" />
 
+Note : to debug correctly a assembly program for PIC12F675, you must launch the "Program memory view" window, scroll down to the last address, right click and select "fill address".<br>
+Write something like 344C so the PC can return to the program address stacked with the call instruction, and run correctly.
+
 
 
 
